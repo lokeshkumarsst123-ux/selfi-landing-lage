@@ -10,29 +10,29 @@ export function Hero() {
   const [hoveredCard, setHoveredCard] = useState<"owner" | "tenant" | null>(null)
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section className="relative min-h-[100vh] flex items-center overflow-x-hidden overflow-y-visible pt-24 pb-20">
       {/* Dark gradient background with glow effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-background" />
-      
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+
       {/* Animated gradient orbs */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/30 rounded-full blur-[128px] animate-pulse" />
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[128px] animate-pulse delay-1000" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-primary/20 to-transparent blur-[100px]" />
-      
+
       {/* Grid pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
         }}
       />
-      
+
       {/* Radial gradient overlay for depth */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.3),transparent)]" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="text-center max-w-4xl mx-auto">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full">
+        <div className="text-center max-w-4xl mx-auto relative z-20">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ export function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
-            Trusted by 2,500+ property owners across Australia
+            🇦🇺 Trusted by 2,500+ property owners across Australia
           </motion.div>
 
           {/* Main Headline */}
@@ -52,7 +52,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight text-balance"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight"
           >
             Property Management
             <br />
@@ -65,7 +65,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-8 text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto text-pretty leading-relaxed"
+            className="mt-8 text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed"
           >
             The all-in-one AI platform that helps owners save thousands and tenants find their perfect home.
           </motion.p>
@@ -78,15 +78,16 @@ export function Hero() {
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
             <Link href="#forms">
-              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-8 h-14 text-lg font-semibold group">
+              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-8 h-14 text-lg font-semibold group shadow-xl">
                 Get Started Free
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 h-14 text-lg">
-              <Play className="w-5 h-5 mr-2 fill-current" />
+            {/* Fix: explicit border + text color so visible on dark bg */}
+            <button className="inline-flex items-center gap-2 px-8 h-14 text-lg font-medium rounded-lg border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm">
+              <Play className="w-5 h-5 fill-current" />
               Watch Demo
-            </Button>
+            </button>
           </motion.div>
 
           {/* Trust indicators */}
@@ -116,8 +117,8 @@ export function Hero() {
             className="mt-16 grid grid-cols-3 gap-8 lg:gap-16 max-w-2xl mx-auto"
           >
             {[
-              { value: "$4.5K+", label: "Average Annual Savings" },
-              { value: "15,000+", label: "Properties Managed" },
+              { value: "$6.5K+", label: "Average Annual Savings" },
+              { value: "12,000+", label: "Properties Managed" },
               { value: "98%", label: "Owner Satisfaction" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
@@ -133,7 +134,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-24 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+          className="mt-24 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto relative z-20"
         >
           {/* Owner Card */}
           <Link href="#forms">
@@ -167,9 +168,9 @@ export function Hero() {
         </motion.div>
 
         {/* Floating UI Elements */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block pointer-events-none z-0">
           <FloatingElement
-            className="absolute top-40 right-8 xl:right-20"
+            className="absolute top-[10%] lg:-right-10 xl:-right-32 2xl:-right-40"
             delay={0.7}
             duration={4}
           >
@@ -184,7 +185,7 @@ export function Hero() {
                 </div>
               </div>
               <div className="flex gap-0.5">
-                {[1,2,3,4,5].map((i) => (
+                {[1, 2, 3, 4, 5].map((i) => (
                   <Star key={i} className="w-4 h-4 fill-accent text-accent" />
                 ))}
               </div>
@@ -193,7 +194,7 @@ export function Hero() {
           </FloatingElement>
 
           <FloatingElement
-            className="absolute top-72 left-4 xl:left-12"
+            className="absolute top-[40%] lg:-left-10 xl:-left-32 2xl:-left-40"
             delay={0.9}
             duration={5}
           >
@@ -219,7 +220,7 @@ export function Hero() {
           </FloatingElement>
 
           <FloatingElement
-            className="absolute bottom-40 right-8 xl:right-32"
+            className="absolute bottom-[0%] lg:-right-10 xl:-right-32 2xl:-right-40"
             delay={1.1}
             duration={4.5}
           >
@@ -240,9 +241,9 @@ export function Hero() {
           </FloatingElement>
         </div>
       </div>
-      
-      {/* Bottom gradient fade to white sections */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent opacity-0" />
     </section>
   )
 }
@@ -272,10 +273,10 @@ function RoleCard({
 }: RoleCardProps) {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  
+
   const rotateX = useTransform(y, [-100, 100], [5, -5])
   const rotateY = useTransform(x, [-100, 100], [-5, 5])
-  
+
   const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 })
   const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 })
 
@@ -311,16 +312,15 @@ function RoleCard({
       }}
       className="group cursor-pointer"
     >
-      <div className={`relative h-full bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8 overflow-hidden transition-all duration-500 ${
-        isHovered ? "shadow-2xl border-white/20 bg-white/10" : "shadow-lg"
-      }`}>
+      <div className={`relative h-full bg-white/5 backdrop-blur-xl rounded-3xl border p-8 overflow-hidden transition-all duration-500 ${isHovered ? "shadow-2xl border-white/20 bg-white/10" : "shadow-lg border-white/10"
+        }`}>
         {/* Gradient overlay */}
         <div className={`absolute inset-0 bg-gradient-to-br ${gradientFrom} ${gradientTo} opacity-50`} />
-        
+
         {/* Glow effect on hover */}
         <div className={`absolute -inset-1 bg-gradient-to-br ${gradientFrom} ${gradientTo} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl`} />
-        
-        <div className="relative">
+
+        <div className="relative z-10">
           <div className={`w-16 h-16 rounded-2xl ${isPrimary ? "bg-primary/20" : "bg-accent/20"} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
             <Icon className={`w-8 h-8 ${accentColor}`} />
           </div>
@@ -339,7 +339,7 @@ function RoleCard({
             ))}
           </ul>
 
-          <Button 
+          <Button
             className={`w-full group/btn ${accentBg} hover:opacity-90 text-white`}
           >
             {ctaText}
@@ -362,8 +362,8 @@ function FloatingElement({ children, className, delay = 0, duration = 4 }: Float
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ 
-        opacity: 1, 
+      animate={{
+        opacity: 1,
         y: [0, -15, 0],
       }}
       transition={{

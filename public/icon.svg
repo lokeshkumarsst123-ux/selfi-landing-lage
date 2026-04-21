@@ -1,26 +1,13 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: black; }
-      .foreground { fill: white; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: white; }
-      .foreground { fill: black; }
-    }
-  </style>
-  <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" />
-    <g style="transform: scale(95%); transform-origin: center">
-      <path class="foreground"
-        d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z" />
-      <path class="foreground"
-        d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z" />
-    </g>
-  </g>
-  <defs>
-    <clipPath id="clip0_7960_43945">
-      <rect width="180" height="180" fill="white" />
-    </clipPath>
-  </defs>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="32" height="32" fill="#07254B"/>
+<g clip-path="url(#clip0_1907_5255)">
+<path d="M0.711182 22.7882C5.51924 20.861 18.4056 18.1628 31.1254 22.7882C26.2672 20.0379 13.3105 16.1874 0.711182 22.7882Z" fill="white"/>
+<path d="M14.1113 10.2912V11.9173L17.2431 15.4105V18.4218L19.7726 18.6025L19.8328 8.39411L22.6032 10.4418V14.4468L21.3084 15.019V18.8434L24.1089 19.3854V14.8985L25.3736 15.7417V19.5962L25.9759 19.8672V15.3201L23.9583 13.965L23.3259 14.2361V10.0202L19.5317 7.00891L14.1113 10.2912Z" fill="white"/>
+<path d="M14.3528 15.5012V18.3918C12.8672 18.4721 9.11865 18.8612 6.01099 19.7766V15.5012L10.137 11.1946L14.3528 15.5012ZM9.11255 16.3479V17.3508H10.0579V16.3479H9.11255ZM10.2356 16.3479V17.3508H11.1809V16.3479H10.2356ZM9.11255 15.095V16.0979H10.0579V15.095H9.11255ZM10.2356 15.095V16.0979H11.1809V15.095H10.2356Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_1907_5255">
+<rect width="30.4" height="27.6626" fill="white" transform="translate(0.711182 2.1333)"/>
+</clipPath>
+</defs>
 </svg>
