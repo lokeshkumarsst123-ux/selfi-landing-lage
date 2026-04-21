@@ -20,10 +20,10 @@ export default function LandingPage() {
       <UserJourneys />
       <FormsSection />
       <AIFeatures />
-      {/* <PlatformShowcase />
+      <PlatformShowcase />
       <TrustSection />
       <FinalCTA />
-      <Footer /> */}
+      <Footer />
     </main>
   )
 }
