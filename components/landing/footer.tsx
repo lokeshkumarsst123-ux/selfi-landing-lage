@@ -2,6 +2,7 @@
 
 import { Home, Twitter, Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const footerLinks = {
   product: [
@@ -45,10 +46,10 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
-                <Home className="w-5 h-5 text-primary-foreground" />
+              <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                <Image src="/logo.svg" alt="Logo" width={80} height={80} />
               </div>
-              <span className="text-xl font-bold text-foreground">PropFlow</span>
+
             </Link>
             <p className="text-muted-foreground mb-6 max-w-xs">
               AI-powered property management platform for Australian property owners and tenants.
@@ -56,7 +57,7 @@ export function Footer() {
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4" />
-                <span>hello@propflow.au</span>
+                <span>hello@Self-i.au</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4" />
@@ -75,7 +76,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
@@ -92,7 +93,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
@@ -109,7 +110,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
@@ -126,7 +127,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                   >
@@ -141,7 +142,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} PropFlow Australia Pty Ltd. All rights reserved. ABN 12 345 678 901
+            &copy; {new Date().getFullYear()} Self-i Australia Pty Ltd. All rights reserved. ABN 12 345 678 901
           </p>
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (

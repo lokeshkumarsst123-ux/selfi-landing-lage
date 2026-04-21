@@ -42,12 +42,11 @@ export function ValueProps() {
   return (
     <section id="features" className="py-32 lg:py-40 relative overflow-hidden">
       {/* Background with subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-slate-50/50 to-background" />
-      
+
+
       {/* Decorative orbs */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]" />
-      
+
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,17 +80,16 @@ export function ValueProps() {
               <div className="relative h-full bg-card rounded-3xl p-8 border border-border/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                 {/* Animated gradient background on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${prop.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
+
                 {/* Glow effect */}
                 <div className={`absolute -top-20 -right-20 w-40 h-40 ${prop.glowColor} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
+
                 {/* Highlight badge */}
-                <div className="absolute -top-1 -right-1">
-                  <span className={`inline-flex items-center px-3 py-1.5 rounded-bl-2xl text-xs font-bold ${
-                    index % 2 === 0 
-                      ? "bg-primary text-primary-foreground" 
-                      : "bg-accent text-accent-foreground"
-                  }`}>
+                <div className="absolute top-0 right-0 z-10">
+                  <span className={`inline-flex items-center px-4 py-2 rounded-bl-3xl text-sm font-bold shadow-sm ${index % 2 === 0
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-accent text-accent-foreground"
+                    }`}>
                     {prop.highlight}
                   </span>
                 </div>

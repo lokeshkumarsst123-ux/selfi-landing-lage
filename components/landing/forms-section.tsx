@@ -49,11 +49,11 @@ export function FormsSection() {
   return (
     <section id="forms" className="py-32 lg:py-40 relative overflow-hidden">
       {/* Background with enhanced gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50/80 via-background to-slate-50/80" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 rounded-full blur-[100px]" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[80px]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px]" />
-      
+      <div className="absolute inset-0 bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 via-transparent to-teal-100/40" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
+
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -80,45 +80,31 @@ export function FormsSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <div className="bg-card/90 backdrop-blur-xl rounded-3xl border border-border/50 shadow-2xl shadow-primary/5 overflow-hidden relative">
-            {/* Subtle inner glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+          <div className="bg-white dark:bg-card rounded-[2.5rem] border border-slate-200 dark:border-border/50 shadow-2xl shadow-slate-200/50 dark:shadow-none overflow-hidden relative">
             {/* Form Type Selector */}
-            <div className="grid grid-cols-2">
-              <button
-                onClick={() => setActiveForm("owner")}
-                className={`relative py-6 px-8 flex items-center justify-center gap-3 font-semibold transition-all duration-300 ${
-                  activeForm === "owner"
-                    ? "bg-gradient-to-r from-primary/10 to-primary/5 text-primary"
-                    : "bg-muted/30 text-muted-foreground hover:bg-muted/50"
-                }`}
-              >
-                <Building className="w-5 h-5" />
-                Property Owner
-                {activeForm === "owner" && (
-                  <motion.div
-                    layoutId="activeFormIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                  />
-                )}
-              </button>
-              <button
-                onClick={() => setActiveForm("tenant")}
-                className={`relative py-6 px-8 flex items-center justify-center gap-3 font-semibold transition-all duration-300 ${
-                  activeForm === "tenant"
-                    ? "bg-gradient-to-r from-accent/10 to-accent/5 text-accent"
-                    : "bg-muted/30 text-muted-foreground hover:bg-muted/50"
-                }`}
-              >
-                <User className="w-5 h-5" />
-                Looking to Rent
-                {activeForm === "tenant" && (
-                  <motion.div
-                    layoutId="activeFormIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
-                  />
-                )}
-              </button>
+            <div className="flex justify-center p-6 border-b border-slate-100 dark:border-border/50 bg-slate-50/50 dark:bg-muted/10">
+              <div className="inline-flex bg-white dark:bg-muted rounded-full p-2 border border-slate-200 dark:border-border shadow-sm w-full max-w-md">
+                <button
+                  onClick={() => setActiveForm("owner")}
+                  className={`flex-1 relative py-3 px-6 flex items-center justify-center gap-2 font-semibold text-sm rounded-full transition-all duration-300 ${activeForm === "owner"
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "text-slate-500 hover:text-slate-900 dark:text-muted-foreground hover:bg-slate-50 dark:hover:bg-muted/50"
+                    }`}
+                >
+                  <Building className="w-4 h-4" />
+                  Property Owner
+                </button>
+                <button
+                  onClick={() => setActiveForm("tenant")}
+                  className={`flex-1 relative py-3 px-6 flex items-center justify-center gap-2 font-semibold text-sm rounded-full transition-all duration-300 ${activeForm === "tenant"
+                    ? "bg-accent text-accent-foreground shadow-md"
+                    : "text-slate-500 hover:text-slate-900 dark:text-muted-foreground hover:bg-slate-50 dark:hover:bg-muted/50"
+                    }`}
+                >
+                  <User className="w-4 h-4" />
+                  Looking to Rent
+                </button>
+              </div>
             </div>
 
             <div className="p-8 lg:p-12">
@@ -131,9 +117,9 @@ export function FormsSection() {
                     exit={{ opacity: 0, x: 20 }}
                   >
                     {ownerFormSubmitted ? (
-                      <SuccessMessage 
-                        title="Property Submitted!"
-                        message="Our team will review your property and contact you within 24 hours to schedule an inspection."
+                      <SuccessMessage
+                        title="Property Submitted! 🎉"
+                        message="Our team will review your details within 24 hours. We'll call you to schedule an offline property inspection. Once verified, your owner login credentials will be created."
                         onReset={resetOwnerForm}
                         color="primary"
                       />
@@ -149,7 +135,7 @@ export function FormsSection() {
                             ))}
                           </div>
                           <div className="h-2 bg-muted rounded-full overflow-hidden">
-                            <motion.div 
+                            <motion.div
                               className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full"
                               initial={{ width: "0%" }}
                               animate={{ width: `${(ownerStep / 3) * 100}%` }}
@@ -216,11 +202,10 @@ export function FormsSection() {
                                   ].map((plan) => (
                                     <label
                                       key={plan.name}
-                                      className={`relative flex flex-col p-6 border rounded-2xl cursor-pointer transition-all duration-300 hover:shadow-lg ${
-                                        plan.popular 
-                                          ? "border-primary bg-primary/5 ring-2 ring-primary/20" 
-                                          : "border-border hover:border-primary/50 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                                      }`}
+                                      className={`relative flex flex-col p-6 border rounded-2xl cursor-pointer transition-all duration-300 hover:shadow-lg ${plan.popular
+                                        ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                                        : "border-border hover:border-primary/50 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+                                        }`}
                                     >
                                       <input type="radio" name="service-plan" value={plan.name} className="sr-only" defaultChecked={plan.popular} />
                                       {plan.popular && (
@@ -270,9 +255,9 @@ export function FormsSection() {
                     exit={{ opacity: 0, x: -20 }}
                   >
                     {tenantFormSubmitted ? (
-                      <SuccessMessage 
-                        title="Application Submitted!"
-                        message="We'll match you with available properties and be in touch within 48 hours."
+                      <SuccessMessage
+                        title="Application Submitted! 🎉"
+                        message="Our team will review your application, run background checks, and be in touch within 48 hours. After approval, your tenant portal login credentials will be sent to your email."
                         onReset={resetTenantForm}
                         color="accent"
                       />
@@ -288,7 +273,7 @@ export function FormsSection() {
                             ))}
                           </div>
                           <div className="h-2 bg-muted rounded-full overflow-hidden">
-                            <motion.div 
+                            <motion.div
                               className="h-full bg-gradient-to-r from-accent to-accent/80 rounded-full"
                               initial={{ width: "0%" }}
                               animate={{ width: `${(tenantStep / 3) * 100}%` }}
@@ -307,6 +292,13 @@ export function FormsSection() {
                                   <FormField icon={Mail} label="Email Address" id="tenant-email" type="email" placeholder="jane@example.com" required />
                                   <FormField icon={Phone} label="Phone Number" id="tenant-phone" type="tel" placeholder="+61 400 000 000" required />
                                   <FormField icon={CreditCard} label="Employment Status" id="tenant-employment" placeholder="Full-time employed" required />
+                                  <div className="space-y-2 md:col-span-2">
+                                    <label htmlFor="tenant-state" className="text-foreground font-medium text-sm">Preferred State / Territory</label>
+                                    <select id="tenant-state" className="w-full h-12 px-4 border border-border rounded-xl bg-background text-foreground text-sm focus:ring-2 focus:ring-accent/20 focus:outline-none">
+                                      <option value="">Select a state...</option>
+                                      {["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"].map((s) => <option key={s} value={s}>{s}</option>)}
+                                    </select>
+                                  </div>
                                 </div>
                               </StepContent>
                             )}
@@ -423,27 +415,27 @@ interface FormFieldProps {
 function FormField({ icon: Icon, label, id, type = "text", placeholder, required }: FormFieldProps) {
   return (
     <div className="space-y-2">
-      <Label htmlFor={id} className="text-foreground font-medium">{label}</Label>
-      <div className="relative">
-        <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+      <Label htmlFor={id} className="text-slate-700 dark:text-foreground font-semibold text-sm">{label}</Label>
+      <div className="relative group">
+        <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors" />
         <Input
           id={id}
           type={type}
           placeholder={placeholder}
           required={required}
-          className="pl-12 h-12 bg-background border-border rounded-xl focus:ring-2 focus:ring-primary/20"
+          className="pl-12 h-14 bg-slate-50 dark:bg-muted/30 border-slate-200 dark:border-border rounded-2xl focus:bg-white dark:focus:bg-card focus:ring-2 focus:ring-primary/20 focus:border-primary shadow-sm text-sm transition-all"
         />
       </div>
     </div>
   )
 }
 
-function SuccessMessage({ 
-  title, 
-  message, 
+function SuccessMessage({
+  title,
+  message,
   onReset,
   color
-}: { 
+}: {
   title: string
   message: string
   onReset: () => void
@@ -455,7 +447,7 @@ function SuccessMessage({
       animate={{ opacity: 1, scale: 1 }}
       className="text-center py-16"
     >
-      <motion.div 
+      <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
