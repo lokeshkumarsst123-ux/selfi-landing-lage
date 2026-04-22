@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, Twitter, Linkedin, Facebook, Instagram, Mail, Phone, MapPin, Building2 } from "lucide-react"
+import { Home, Twitter, Linkedin, Facebook, Instagram, Mail, Phone, MapPin, Building2, Wrench, Apple } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
@@ -66,6 +66,7 @@ export function Footer() {
                 </button>
               </div>
             </div>
+
           </div>
 
           {/* Links Section */}
@@ -100,6 +101,7 @@ export function Footer() {
               </ul>
             </div>
 
+
             <div className="min-w-[140px]">
               <h4 className="text-slate-900 dark:text-white font-bold mb-8 flex items-center gap-3 text-lg transition-colors">
                 <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.6)] dark:shadow-[0_0_10px_rgba(99,102,241,0.8)]" /> Connect
@@ -128,6 +130,7 @@ export function Footer() {
                   Sydney, Australia
                 </li>
               </ul>
+
             </div>
 
           </div>

@@ -6,6 +6,7 @@ import { UserJourneys } from "@/components/landing/user-journeys"
 import { FormsSection } from "@/components/landing/forms-section"
 import { AIFeatures } from "@/components/landing/ai-features"
 import { PlatformShowcase } from "@/components/landing/platform-showcase"
+import { AppEcosystem } from "@/components/landing/app-ecosystem"
 import { TrustSection } from "@/components/landing/trust-section"
 import { FinalCTA } from "@/components/landing/final-cta"
 import { Footer } from "@/components/landing/footer"
@@ -21,6 +22,7 @@ export default function LandingPage() {
       <FormsSection />
       <AIFeatures />
       <PlatformShowcase />
+      <AppEcosystem />
       <TrustSection />
       <FinalCTA />
       <Footer />
