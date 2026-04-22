@@ -50,12 +50,12 @@ export function PlatformShowcase() {
                 </motion.div>
 
                 {/* Floating Glassmorphic UI Dashboard Elements */}
-                <div className="relative h-[600px] lg:h-[800px] w-full flex items-center justify-center">
+                <div className="relative h-[500px] py-10 sm:py-0 sm:h-[600px] lg:h-[800px] w-full flex flex-col items-center justify-center gap-8 sm:block">
 
                     {/* Center Main Dashboard */}
                     <motion.div
                         style={{ scale, opacity }}
-                        className="absolute z-10 w-full max-w-5xl aspect-[16/9] bg-slate-900/60 backdrop-blur-3xl rounded-3xl border border-white/10 shadow-[0_0_80px_rgba(59,130,246,0.15)] overflow-hidden hidden sm:block"
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-5xl aspect-[16/9] bg-slate-900/60 backdrop-blur-3xl rounded-3xl border border-white/10 shadow-[0_0_80px_rgba(59,130,246,0.15)] overflow-hidden  sm:block"
                     >
                         {/* Dashboard Header mock */}
                         <div className="h-14 border-b border-white/10 bg-white/5 flex items-center px-6 gap-4">
@@ -128,10 +128,10 @@ export function PlatformShowcase() {
                     {/* Left Floating Element */}
                     <motion.div
                         style={{ y: y1 }}
-                        className="absolute -left-4 md:left-10 top-1/4 z-20 w-64 p-5 md:p-6 bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-teal-500/30 shadow-[0_0_50px_rgba(20,184,166,0.15)]"
+                        className="relative sm:absolute sm:-left-4 md:left-10 sm:top-1/4 z-20 w-full max-w-[300px] sm:max-w-none sm:w-64 p-5 md:p-6 bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-teal-500/30 shadow-[0_0_50px_rgba(20,184,166,0.15)] mx-auto sm:mx-0"
                     >
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-3 bg-teal-500/20 rounded-xl relative overflow-hidden">
+                            <div className="p-3 bg-teal-500/20 rounded-xl relative overflow-hidden flex-shrink-0">
                                 <div className="absolute inset-0 bg-teal-400/20 animate-pulse" />
                                 <ShieldCheck className="w-6 h-6 text-teal-400 relative z-10" />
                             </div>
@@ -153,10 +153,10 @@ export function PlatformShowcase() {
                     {/* Right Floating Element */}
                     <motion.div
                         style={{ y: y2 }}
-                        className="absolute -right-4 md:right-10 bottom-1/4 z-20 w-72 p-5 md:p-6 bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-indigo-500/30 shadow-[0_0_50px_rgba(99,102,241,0.15)]"
+                        className="relative sm:absolute sm:-right-4 md:right-10 sm:bottom-1/4 z-20 w-full max-w-[300px] sm:max-w-none sm:w-72 p-5 md:p-6 bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-indigo-500/30 shadow-[0_0_50px_rgba(99,102,241,0.15)] mx-auto sm:mx-0"
                     >
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-3 bg-indigo-500/20 rounded-xl relative overflow-hidden">
+                            <div className="p-3 bg-indigo-500/20 rounded-xl relative overflow-hidden flex-shrink-0">
                                 <div className="absolute inset-0 bg-indigo-400/20 animate-pulse delay-700" />
                                 <Activity className="w-6 h-6 text-indigo-400 relative z-10" />
                             </div>
@@ -168,7 +168,7 @@ export function PlatformShowcase() {
                                         <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
                                     </span>
                                 </div>
-                                <div className="text-indigo-400 text-sm">+15% Yield Increase</div>
+                                <div className="text-indigo-400 text-sm truncate">+15% Yield Increase</div>
                             </div>
                         </div>
                         <div className="flex items-end gap-2 h-14">
