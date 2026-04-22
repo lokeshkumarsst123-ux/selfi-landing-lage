@@ -47,29 +47,30 @@ export function FormsSection() {
   }
 
   return (
-    <section id="forms" className="py-32 lg:py-40 relative overflow-hidden">
-      {/* Background with enhanced gradient */}
-      <div className="absolute inset-0 bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-3xl" />
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 via-transparent to-teal-100/40" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
+    <section id="forms" className="py-32 lg:py-40 relative overflow-hidden bg-slate-50/50 dark:bg-transparent">
+      {/* Dynamic Background Blur Animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[45%] h-[65%] rounded-full bg-blue-200/40 dark:bg-blue-900/20 blur-[120px] animate-pulse [animation-duration:9s]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[55%] h-[60%] rounded-full bg-cyan-200/40 dark:bg-cyan-900/20 blur-[120px] animate-pulse [animation-duration:11s] [animation-delay:1s]" />
+        <div className="absolute top-[30%] left-[30%] w-[35%] h-[40%] rounded-full bg-teal-100/30 dark:bg-teal-900/20 blur-[100px] animate-pulse [animation-duration:13s] [animation-delay:3s]" />
+      </div>
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary/10 border border-slate-200 dark:border-primary/20 text-cyan-700 dark:text-cyan-400 text-sm font-bold tracking-wide mb-6 shadow-sm">
             <Sparkles className="w-4 h-4" />
             Get Started in Minutes
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground text-balance leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] text-balance">
             Your Journey
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Starts Here</span>
+            <span className="bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent px-2"> Starts Here</span>
           </h2>
-          <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+          <p className="mt-6 text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-pretty font-medium leading-relaxed">
             Complete our simple multi-step form and we&apos;ll handle the rest.
           </p>
         </motion.div>

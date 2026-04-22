@@ -20,7 +20,7 @@ export function ProductShowcase() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Left Side: Image Gallery */}
-          <div className="flex justify-center items-center gap-4 sm:gap-6 h-[450px] sm:h-[550px] lg:h-[650px] py-12 px-2 sm:px-0">
+          <div className="flex justify-center items-center gap-4 sm:gap-6 h-[400px] sm:h-[550px] lg:h-[650px] py-8 sm:py-12 px-4 sm:px-0">
             {images.map((src, index) => (
               <motion.div
                 key={index}
@@ -28,8 +28,8 @@ export function ProductShowcase() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15, duration: 0.8 }}
-                className={`relative w-1/3 h-full rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 ${index === 1 ? 'translate-y-12' : index === 2 ? '-translate-y-6' : 'translate-y-2'
-                  }`}
+                className={`relative h-full rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 ${index === 0 ? 'w-full sm:w-1/3 translate-y-0 sm:translate-y-2' : 'hidden sm:block sm:w-1/3'
+                  } ${index === 1 ? 'sm:translate-y-12' : index === 2 ? 'sm:-translate-y-6' : ''}`}
               >
                 <Image
                   src={src}
