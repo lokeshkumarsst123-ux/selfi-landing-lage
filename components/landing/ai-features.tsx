@@ -55,7 +55,7 @@ export function AIFeatures() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="features" className="py-32 lg:py-40 relative overflow-hidden bg-slate-950">
+    <section id="works-for-you" className="py-32 lg:py-40 relative overflow-hidden bg-slate-950">
       {/* Premium Dark gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-slate-900/10 to-transparent" />

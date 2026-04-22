@@ -40,29 +40,30 @@ const valueProps = [
 
 export function ValueProps() {
   return (
-    <section id="features" className="py-32 lg:py-40 relative overflow-hidden">
-      {/* Background with subtle gradient */}
+    <section id="features" className="py-32 lg:py-40 relative overflow-hidden bg-slate-50 dark:bg-transparent">
+      {/* Dynamic Background Blur Animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[70%] rounded-full bg-cyan-200/40 dark:bg-cyan-900/20 blur-[120px] animate-pulse [animation-duration:8s]" />
+        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[60%] rounded-full bg-blue-200/40 dark:bg-blue-900/20 blur-[120px] animate-pulse [animation-duration:10s] [animation-delay:2s]" />
+        <div className="absolute -bottom-[20%] left-[20%] w-[60%] h-[50%] rounded-full bg-teal-100/40 dark:bg-teal-900/20 blur-[120px] animate-pulse [animation-duration:12s] [animation-delay:1s]" />
+      </div>
 
-
-      {/* Decorative orbs */}
-
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary/10 border border-slate-200 dark:border-primary/20 text-cyan-700 dark:text-cyan-400 text-sm font-bold tracking-wide mb-6 shadow-sm">
             <Sparkles className="w-4 h-4" />
             Why Property Owners Love Us
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground text-balance leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] text-balance">
             Why Owners
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Choose Us</span>
+            <span className="bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent px-2"> Choose Us</span>
           </h2>
-          <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+          <p className="mt-6 text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-pretty font-medium leading-relaxed">
             Join thousands of Australian property owners who&apos;ve switched to smarter property management.
           </p>
         </motion.div>

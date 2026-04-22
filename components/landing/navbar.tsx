@@ -10,7 +10,7 @@ import Link from "next/link"
 const navLinks = [
   { name: "Features", href: "#features" },
   { name: "How It Works", href: "#forms" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Intelligence", href: "#works-for-you" },
   { name: "Trust", href: "#trust" },
 ]
 
@@ -32,8 +32,8 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-2 ${isScrolled
-          ? "bg-primary border-border/50 "
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-2 ${isScrolled || isMobileMenuOpen
+          ? "bg-[#020617]  border-white/10 shadow-lg"
           : "bg-transparent"
           }`}
       >
@@ -41,10 +41,16 @@ export function Navbar() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="from-primary to-accent flex items-center justify-center  transition-shadow">
-                <Image src="/logo.svg" alt="Logo" width={150} height={150} />
+              <div className="from-primary to-accent flex items-center justify-center transition-shadow">
+                <Image
+                  src="/logo.svg"
+                  alt="Logo"
+                  width={150}
+                  height={150}
+                  className={`w-auto object-contain transition-all duration-500 origin-left ${(isScrolled || isMobileMenuOpen) ? "h-8 lg:h-10" : "h-20 lg:h-28"
+                    }`}
+                />
               </div>
-
             </Link>
 
             {/* Desktop Navigation */}
@@ -53,7 +59,7 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors font-medium group ${isScrolled ? "text-slate-300" : "text-slate-300"}`}
+                  className={`relative px-4 py-2 transition-colors font-medium group text-slate-300 hover:text-white`}
                 >
                   {link.name}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300" />
@@ -63,12 +69,6 @@ export function Navbar() {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
-              {/* <Button
-                variant="ghost"
-                className={`font-medium transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-slate-300 hover:text-white hover:bg-white/10"}`}
-              >
-                Sign In
-              </Button> */}
               <Button
                 className="font-medium bg-white text-slate-900 hover:bg-slate-100 shadow-lg hover:shadow-white/25 transition-all group"
               >
@@ -79,7 +79,7 @@ export function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className={`lg:hidden p-2 rounded-lg transition-colors ${isScrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"}`}
+              className="lg:hidden p-2 rounded-lg transition-colors text-white hover:bg-white/10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -95,17 +95,17 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 lg:hidden pt-20"
+            className="fixed inset-0 z-40 lg:hidden pt-[56px] sm:pt-[64px]"
           >
             <div
-              className="absolute inset-0 bg-background/80 backdrop-blur-xl"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="relative bg-card border-b border-border shadow-2xl"
+              className="relative bg-[#020617] border-b border-white/10 shadow-2xl"
             >
               <div className="px-6 py-8 space-y-2">
                 {navLinks.map((link, index) => (
@@ -117,7 +117,7 @@ export function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className="block py-4 text-lg font-medium text-foreground hover:text-primary transition-colors"
+                      className="block py-4 text-lg font-medium text-slate-300 hover:text-white transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.name}
@@ -125,10 +125,7 @@ export function Navbar() {
                   </motion.div>
                 ))}
                 <div className="pt-6 space-y-3">
-                  {/* <Button variant="outline" className="w-full h-12 font-medium border-border">
-                    Sign In
-                  </Button> */}
-                  <Button className="w-full h-12 font-medium bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <Button className="w-full h-12 font-medium bg-white text-slate-900 hover:bg-slate-100">
                     Get Started
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>

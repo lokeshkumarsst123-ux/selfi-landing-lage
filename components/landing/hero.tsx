@@ -67,7 +67,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-8 text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed"
           >
-            The all-in-one AI platform that helps owners save thousands and tenants find their perfect home.
+            <strong className="text-white font-semibold">Property Management Made Easy.</strong> The all-in-one AI platform that helps owners save thousands and tenants find their perfect home.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -295,10 +295,11 @@ function RoleCard({
   }
 
   const isPrimary = type === "owner"
-  const gradientFrom = isPrimary ? "from-primary/30" : "from-accent/30"
-  const gradientTo = isPrimary ? "to-primary/5" : "to-accent/5"
-  const accentColor = isPrimary ? "text-primary" : "text-accent"
-  const accentBg = isPrimary ? "bg-primary" : "bg-accent"
+  const gradientFrom = isPrimary ? "from-blue-500/30" : "from-teal-400/30"
+  const gradientTo = isPrimary ? "to-blue-500/5" : "to-teal-400/5"
+  const accentColor = isPrimary ? "text-blue-400" : "text-teal-400"
+  const accentBg = isPrimary ? "bg-blue-600" : "bg-teal-500"
+  const iconBg = isPrimary ? "bg-blue-500/20" : "bg-teal-400/20"
 
   return (
     <motion.div
@@ -321,7 +322,7 @@ function RoleCard({
         <div className={`absolute -inset-1 bg-gradient-to-br ${gradientFrom} ${gradientTo} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl`} />
 
         <div className="relative z-10">
-          <div className={`w-16 h-16 rounded-2xl ${isPrimary ? "bg-primary/20" : "bg-accent/20"} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+          <div className={`w-16 h-16 rounded-2xl ${iconBg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
             <Icon className={`w-8 h-8 ${accentColor}`} />
           </div>
 
@@ -331,7 +332,7 @@ function RoleCard({
           <ul className="space-y-3 mb-8">
             {features.map((feature) => (
               <li key={feature} className="flex items-center gap-3 text-sm">
-                <div className={`w-5 h-5 rounded-full ${isPrimary ? "bg-primary/20" : "bg-accent/20"} flex items-center justify-center flex-shrink-0`}>
+                <div className={`w-5 h-5 rounded-full ${iconBg} flex items-center justify-center flex-shrink-0`}>
                   <CheckCircle className={`w-3 h-3 ${accentColor}`} />
                 </div>
                 <span className="text-slate-200">{feature}</span>
@@ -340,7 +341,7 @@ function RoleCard({
           </ul>
 
           <Button
-            className={`w-full group/btn ${accentBg} hover:opacity-90 text-white`}
+            className={`w-full group/btn ${accentBg} hover:opacity-90 text-white border-0`}
           >
             {ctaText}
             <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
