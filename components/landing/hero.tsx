@@ -226,7 +226,7 @@ export function Hero() {
           >
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-4 w-56">
               <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-5 h-5 text-primary" />
+                <Zap className="w-5 h-5 text-accent" />
                 <span className="text-sm font-semibold text-white">Rent Collected</span>
               </div>
               <div className="text-2xl font-bold text-white">$2,450</div>

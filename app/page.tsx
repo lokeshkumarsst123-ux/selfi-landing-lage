@@ -23,9 +23,9 @@ export default function LandingPage() {
       <AIFeatures />
       <PlatformShowcase />
       <AppEcosystem />
-      <TrustSection />
+      {/* <TrustSection />
       <FinalCTA />
-      <Footer />
+      <Footer /> */}
     </main>
   )
 }
