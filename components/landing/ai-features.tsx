@@ -22,7 +22,7 @@ const aiFeatures = [
     description: "Advanced algorithms evaluate rental history, income, and references for comprehensive reliability scores.",
     stat: "90%",
     statLabel: "Accuracy Rate",
-    gradient: "from-teal-600/20 to-accent/10",
+    gradient: "from-blue-600/20 to-accent/10",
     accentColor: "text-accent",
     accentBg: "bg-accent/20",
     visualization: TenantScoreViz,
@@ -44,7 +44,7 @@ const aiFeatures = [
     description: "Stay ahead of Australian tenancy law changes across all 8 states with automated monitoring and alerts.",
     stat: "100%",
     statLabel: "Compliant",
-    gradient: "from-teal-600/20 to-accent/10",
+    gradient: "from-blue-600/20 to-accent/10",
     accentColor: "text-accent",
     accentBg: "bg-accent/20",
     visualization: ComplianceViz,
@@ -55,7 +55,7 @@ export function AIFeatures() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="works-for-you" className="py-32 lg:py-40 relative overflow-hidden bg-slate-950">
+    <section id="works-for-you" className="py-12 md:py-24 lg:py-40 relative overflow-hidden bg-slate-950">
       {/* Premium Dark gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-slate-900/10 to-transparent" />
@@ -78,7 +78,7 @@ export function AIFeatures() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-10 md:mb-20"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-white/90 text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
@@ -94,14 +94,14 @@ export function AIFeatures() {
         </motion.div>
 
         {/* 2×2 Grid — original layout */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
           {aiFeatures.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               className="group"
@@ -113,7 +113,7 @@ export function AIFeatures() {
                 {/* Card gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-60 transition-opacity group-hover:opacity-100 duration-500`} />
 
-                <div className="relative p-6 sm:p-8">
+                <div className="relative p-5 md:p-8">
                   <div className="flex items-start justify-between mb-6">
                     <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${feature.accentBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                       <feature.icon className={`w-6 h-6 sm:w-7 sm:h-7 ${feature.accentColor}`} />
@@ -154,14 +154,14 @@ function RentPricingViz({ isActive, isPrimary }: { isActive: boolean; isPrimary:
           initial={{ height: 0 }}
           animate={{ height: isActive ? `${height}%` : `${height * 0.65}%` }}
           transition={{ duration: 0.5, delay: i * 0.04 }}
-          className={`w-4 sm:w-6 rounded-t ${isPrimary ? "bg-gradient-to-t from-blue-500 to-blue-300/60" : "bg-gradient-to-t from-teal-500 to-teal-300/60"}`}
+          className={`w-4 sm:w-6 rounded-t ${isPrimary ? "bg-gradient-to-t from-blue-500 to-blue-300/60" : "bg-gradient-to-t from-violet-500 to-violet-300/60"}`}
         />
       ))}
       {isActive && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`absolute top-2 right-2 sm:top-3 sm:right-4 px-2 py-1 sm:px-2.5 sm:py-1 ${isPrimary ? "bg-blue-500" : "bg-teal-500"} text-white text-[10px] sm:text-xs font-semibold rounded-full flex items-center gap-1`}
+          className={`absolute top-2 right-2 sm:top-3 sm:right-4 px-2 py-1 sm:px-2.5 sm:py-1 ${isPrimary ? "bg-blue-500" : "bg-violet-500"} text-white text-[10px] sm:text-xs font-semibold rounded-full flex items-center gap-1`}
         >
           <TrendingUp className="w-3 h-3" />
           +15%
@@ -251,7 +251,7 @@ function ComplianceViz({ isActive, isPrimary }: { isActive: boolean; isPrimary: 
     { label: "Bond Lodged", checked: isActive },
   ]
   return (
-    <div className="h-full p-4 sm:p-5 grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-3 overflow-y-auto no-scrollbar">
+    <div className="h-full p-4 sm:p-5 grid grid-cols-2 gap-2 sm:gap-3 overflow-hidden">
       {items.map((item, i) => (
         <motion.div
           key={item.label}

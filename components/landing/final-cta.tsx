@@ -6,13 +6,13 @@ import Link from "next/link"
 
 export function FinalCTA() {
   return (
-    <section className="py-32 lg:py-40 relative overflow-hidden bg-black">
+    <section className="py-16 md:py-16 md:py-24 lg:py-40 relative overflow-hidden bg-black">
       {/* Deep premium gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-[#0a1128] to-black" />
 
       {/* Rich gradient shades adding depth without hurting contrast */}
       <div className="absolute top-0 left-0 w-[80%] h-[80%] bg-gradient-to-br from-blue-700/20 via-indigo-900/10 to-transparent rounded-full blur-[150px] mix-blend-screen pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[80%] h-[80%] bg-gradient-to-tl from-teal-600/20 via-cyan-800/10 to-transparent rounded-full blur-[150px] mix-blend-screen pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[80%] h-[80%] bg-gradient-to-tl from-blue-600/20 via-blue-800/10 to-transparent rounded-full blur-[150px] mix-blend-screen pointer-events-none" />
 
       {/* Grid pattern overlay */}
       <div
@@ -36,16 +36,16 @@ export function FinalCTA() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-bold mb-8 shadow-lg"
           >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <Sparkles className="w-4 h-4 text-blue-400" />
             🇦🇺 Join 2,500+ Australian property owners
           </motion.div>
 
           {/* Headline */}
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white text-balance leading-tight drop-shadow-md">
-            Ready to Skip
+            Ready to Take
             <br />
-            <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-emerald-300 bg-clip-text text-transparent filter drop-shadow-sm">
-              The Agent?
+            <span className="bg-gradient-to-r from-blue-300 via-blue-300 to-blue-300 bg-clip-text text-transparent filter drop-shadow-sm">
+              Control?
             </span>
           </h2>
 
@@ -80,7 +80,7 @@ export function FinalCTA() {
               "Offline verification included",
             ].map((item) => (
               <div key={item} className="flex items-center gap-2 text-sm sm:text-base">
-                <CheckCircle className="w-5 h-5 text-cyan-400" />
+                <CheckCircle className="w-5 h-5 text-blue-400" />
                 {item}
               </div>
             ))}

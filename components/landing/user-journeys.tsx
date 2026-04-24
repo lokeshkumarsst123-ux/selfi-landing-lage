@@ -68,18 +68,18 @@ export function UserJourneys() {
   const currentStep = steps[activeStep]
 
   return (
-    <section className="py-32 lg:py-40 relative overflow-hidden bg-slate-50/80 border-y border-border/40">
+    <section className="py-16 md:py-16 md:py-24 lg:py-40 relative overflow-hidden bg-slate-50/80 border-y border-border/40">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 via-transparent to-teal-100/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 via-transparent to-blue-100/40" />
       <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-sm font-medium mb-6">
             <ArrowRight className="w-4 h-4" />
@@ -95,7 +95,7 @@ export function UserJourneys() {
         </motion.div>
 
         {/* Journey Toggle */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-10 md:mb-16">
           <div className="inline-flex bg-muted/60 rounded-2xl p-1.5 border border-border/50">
             <button
               onClick={() => { setActiveJourney("owner"); setActiveStep(0); }}
@@ -120,7 +120,7 @@ export function UserJourneys() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Steps */}
           <div className="space-y-4">
             {steps.map((step, index) => (
@@ -297,8 +297,8 @@ function JourneyVisual({ type, step }: { type: JourneyType; step: string }) {
     return (
       <div className="p-8">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center">
-            <MapPin className="w-5 h-5 text-teal-600" />
+          <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <MapPin className="w-5 h-5 text-blue-600" />
           </div>
           <span className="font-semibold text-foreground">Offline Property Inspection</span>
         </div>

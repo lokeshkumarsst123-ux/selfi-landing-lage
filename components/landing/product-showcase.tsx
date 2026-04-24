@@ -11,13 +11,13 @@ const images = [
 
 export function ProductShowcase() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden bg-background">
+    <section className="py-8 md:py-16 md:py-24 lg:py-32 relative overflow-hidden bg-background">
       {/* Light background blur shades */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
 
           {/* Left Side: Image Gallery */}
           <div className="flex justify-center items-center gap-4 sm:gap-6 h-[400px] sm:h-[550px] lg:h-[650px] py-8 sm:py-12 px-4 sm:px-0">
@@ -49,7 +49,7 @@ export function ProductShowcase() {
             transition={{ duration: 0.8 }}
             className="flex flex-col justify-center lg:pl-16"
           >
-            <div className="inline-flex max-w-max px-4 py-1.5 bg-[#3c8c72] text-white text-[11px] font-bold tracking-widest mb-6 uppercase rounded-sm shadow-md">
+            <div className="inline-flex max-w-max px-4 py-1.5 bg-blue-600 text-white text-[11px] font-bold tracking-widest mb-6 uppercase rounded-sm shadow-md">
               What is Self-i
             </div>
 

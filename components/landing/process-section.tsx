@@ -38,7 +38,7 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section id="process" className="py-24 lg:py-32 bg-muted/30">
+    <section id="process" className="py-16 md:py-24 lg:py-32 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
