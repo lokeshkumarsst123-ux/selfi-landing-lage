@@ -8,7 +8,7 @@ const apps = [
         title: "Owner App",
         icon: Building2,
         description: "Your complete control center. List properties, automate rent collection, and approve maintenance requests instantly.",
-        color: "from-blue-500 to-cyan-400",
+        color: "from-blue-500 to-blue-400",
         shadowColor: "shadow-blue-500/20",
         features: ["Property Listings", "Rent Tracking", "Applicant Screening"],
         delay: 0.1
@@ -17,8 +17,8 @@ const apps = [
         title: "Tenant App",
         icon: User,
         description: "The modern renting experience. Find your perfect home, pay rent on autopilot, and report issues with a tap.",
-        color: "from-teal-400 to-emerald-400",
-        shadowColor: "shadow-teal-500/20",
+        color: "from-blue-400 to-blue-400",
+        shadowColor: "shadow-blue-500/20",
         features: ["AI Property Match", "Digital Lease", "1-Tap Maintenance"],
         delay: 0.2
     },
@@ -35,11 +35,11 @@ const apps = [
 
 export function AppEcosystem() {
     return (
-        <section className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden border-y border-slate-200/50">
+        <section className="py-16 md:py-24 lg:py-32 bg-slate-50 relative overflow-hidden border-y border-slate-200/50">
             {/* Elegant light mode gradients */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-slate-100 to-transparent pointer-events-none" />
             <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-400/10 rounded-full blur-[80px] pointer-events-none" />
-            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-teal-400/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-[80px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div

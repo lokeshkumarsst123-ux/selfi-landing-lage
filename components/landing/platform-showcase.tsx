@@ -18,7 +18,7 @@ export function PlatformShowcase() {
     const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.9])
 
     return (
-        <section ref={containerRef} className="py-32 lg:py-40 relative bg-slate-900 overflow-hidden border-t border-slate-800 shadow-[inset_0_40px_80px_rgba(0,0,0,0.5)]">
+        <section ref={containerRef} className="py-16 md:py-24 lg:py-40 relative bg-slate-900 overflow-hidden border-t border-slate-800 shadow-[inset_0_40px_80px_rgba(0,0,0,0.5)]">
             {/* Dynamic Background */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/15 via-slate-900 to-slate-950" />
 
@@ -45,7 +45,7 @@ export function PlatformShowcase() {
                     </div>
                     <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white text-balance leading-tight">
                         Manage Everything. <br />
-                        <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-indigo-400 bg-clip-text text-transparent italic">Effortlessly.</span>
+                        <span className="bg-gradient-to-r from-blue-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent italic">Effortlessly.</span>
                     </h2>
                 </motion.div>
 
@@ -60,9 +60,9 @@ export function PlatformShowcase() {
                         {/* Dashboard Header mock */}
                         <div className="h-14 border-b border-white/10 bg-white/5 flex items-center px-6 gap-4">
                             <div className="flex gap-2">
-                                <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                                <div className="w-3 h-3 rounded-full bg-amber-400/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-400/80" />
+                                <div className="w-3 h-3 rounded-full bg-slate-600/80" />
+                                <div className="w-3 h-3 rounded-full bg-blue-500/80" />
+                                <div className="w-3 h-3 rounded-full bg-blue-400/80" />
                             </div>
                             <div className="mx-auto w-1/3 h-6 bg-white/5 rounded-md" />
                         </div>
@@ -89,10 +89,10 @@ export function PlatformShowcase() {
                                             <div className="w-3/4 h-6 bg-white/20 rounded" />
                                         </div>
                                     </div>
-                                    <div className="flex-1 h-32 bg-gradient-to-br from-teal-500/10 to-transparent border border-teal-500/20 rounded-2xl p-5 flex flex-col justify-between group overflow-hidden relative">
-                                        <div className="absolute inset-0 bg-teal-500/5 group-hover:bg-teal-500/10 transition-colors" />
-                                        <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center relative z-10">
-                                            <Users className="w-5 h-5 text-teal-400" />
+                                    <div className="flex-1 h-32 bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-500/20 rounded-2xl p-5 flex flex-col justify-between group overflow-hidden relative">
+                                        <div className="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors" />
+                                        <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center relative z-10">
+                                            <Users className="w-5 h-5 text-blue-400" />
                                         </div>
                                         <div className="space-y-2 relative z-10">
                                             <div className="w-1/2 h-4 bg-white/10 rounded" />
@@ -128,21 +128,21 @@ export function PlatformShowcase() {
                     {/* Left Floating Element */}
                     <motion.div
                         style={{ y: y1 }}
-                        className="relative sm:absolute sm:-left-4 md:left-10 sm:top-1/4 z-20 w-full max-w-[300px] sm:max-w-none sm:w-64 p-5 md:p-6 bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-teal-500/30 shadow-[0_0_50px_rgba(20,184,166,0.15)] mx-auto sm:mx-0"
+                        className="relative sm:absolute sm:-left-4 md:left-10 sm:top-1/4 z-20 w-full max-w-[300px] sm:max-w-none sm:w-64 p-5 md:p-6 bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-blue-500/30 shadow-[0_0_50px_rgba(20,184,166,0.15)] mx-auto sm:mx-0"
                     >
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-3 bg-teal-500/20 rounded-xl relative overflow-hidden flex-shrink-0">
-                                <div className="absolute inset-0 bg-teal-400/20 animate-pulse" />
-                                <ShieldCheck className="w-6 h-6 text-teal-400 relative z-10" />
+                            <div className="p-3 bg-blue-500/20 rounded-xl relative overflow-hidden flex-shrink-0">
+                                <div className="absolute inset-0 bg-blue-400/20 animate-pulse" />
+                                <ShieldCheck className="w-6 h-6 text-blue-400 relative z-10" />
                             </div>
                             <div>
                                 <div className="text-white font-semibold">AI Risk Analysis</div>
-                                <div className="text-teal-400 text-sm">Strictly Secure</div>
+                                <div className="text-blue-400 text-sm">Strictly Secure</div>
                             </div>
                         </div>
                         <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden relative">
                             <motion.div
-                                className="absolute top-0 left-0 h-full bg-gradient-to-r from-teal-500 to-teal-300"
+                                className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-500 to-blue-300"
                                 initial={{ width: 0 }}
                                 whileInView={{ width: "95%" }}
                                 transition={{ duration: 1, delay: 0.5 }}
@@ -175,7 +175,7 @@ export function PlatformShowcase() {
                             {[40, 70, 45, 90, 65, 100].map((h, i) => (
                                 <motion.div
                                     key={i}
-                                    className="flex-1 bg-gradient-to-t from-indigo-600 to-indigo-400 rounded-sm hover:from-teal-400 hover:to-teal-300 transition-colors"
+                                    className="flex-1 bg-gradient-to-t from-indigo-600 to-indigo-400 rounded-sm hover:from-blue-400 hover:to-blue-300 transition-colors"
                                     initial={{ height: 0 }}
                                     whileInView={{ height: `${h}%` }}
                                     transition={{ duration: 0.5, delay: 0.1 * i }}

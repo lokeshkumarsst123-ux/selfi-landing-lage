@@ -47,12 +47,12 @@ export function FormsSection() {
   }
 
   return (
-    <section id="forms" className="py-32 lg:py-40 relative overflow-hidden bg-slate-50/50 dark:bg-transparent">
+    <section id="forms" className="py-12 md:py-24 lg:py-40 relative overflow-hidden bg-slate-50/50 dark:bg-transparent">
       {/* Dynamic Background Blur Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] right-[-5%] w-[45%] h-[65%] rounded-full bg-blue-200/40 dark:bg-blue-900/20 blur-[120px] animate-pulse [animation-duration:9s]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[55%] h-[60%] rounded-full bg-cyan-200/40 dark:bg-cyan-900/20 blur-[120px] animate-pulse [animation-duration:11s] [animation-delay:1s]" />
-        <div className="absolute top-[30%] left-[30%] w-[35%] h-[40%] rounded-full bg-teal-100/30 dark:bg-teal-900/20 blur-[100px] animate-pulse [animation-duration:13s] [animation-delay:3s]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[55%] h-[60%] rounded-full bg-blue-200/40 dark:bg-blue-900/20 blur-[120px] animate-pulse [animation-duration:11s] [animation-delay:1s]" />
+        <div className="absolute top-[30%] left-[30%] w-[35%] h-[40%] rounded-full bg-blue-100/30 dark:bg-blue-900/20 blur-[100px] animate-pulse [animation-duration:13s] [animation-delay:3s]" />
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -60,15 +60,15 @@ export function FormsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary/10 border border-slate-200 dark:border-primary/20 text-cyan-700 dark:text-cyan-400 text-sm font-bold tracking-wide mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary/10 border border-slate-200 dark:border-primary/20 text-blue-700 dark:text-blue-400 text-sm font-bold tracking-wide mb-6 shadow-sm">
             <Sparkles className="w-4 h-4" />
             Get Started in Minutes
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] text-balance">
             Your Journey
-            <span className="bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent px-2"> Starts Here</span>
+            <span className="bg-gradient-to-r from-blue-600 to-blue-600 dark:from-blue-400 dark:to-blue-400 bg-clip-text text-transparent px-2"> Starts Here</span>
           </h2>
           <p className="mt-6 text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-pretty font-medium leading-relaxed">
             Complete our simple multi-step form and we&apos;ll handle the rest.
@@ -108,7 +108,7 @@ export function FormsSection() {
               </div>
             </div>
 
-            <div className="p-8 lg:p-12">
+            <div className="p-6 md:p-8 lg:p-12">
               <AnimatePresence mode="wait">
                 {activeForm === "owner" ? (
                   <motion.div
@@ -232,7 +232,7 @@ export function FormsSection() {
                             )}
                           </AnimatePresence>
 
-                          <div className="flex gap-4 mt-10">
+                          <div className="flex gap-4 mt-8 md:mt-10">
                             {ownerStep > 1 && (
                               <Button type="button" variant="outline" size="lg" onClick={() => setOwnerStep((s) => (s - 1) as OwnerStep)} className="px-8">
                                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -365,7 +365,7 @@ export function FormsSection() {
                             )}
                           </AnimatePresence>
 
-                          <div className="flex gap-4 mt-10">
+                          <div className="flex gap-4 mt-8 md:mt-10">
                             {tenantStep > 1 && (
                               <Button type="button" variant="outline" size="lg" onClick={() => setTenantStep((s) => (s - 1) as TenantStep)} className="px-8">
                                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -397,7 +397,7 @@ function StepContent({ children }: { children: React.ReactNode }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.5 }}
     >
       {children}
     </motion.div>

@@ -16,7 +16,7 @@ const trustItems = [
     title: "Legal Compliance",
     description: "Fully compliant with Australian residential tenancy laws in all states.",
     badge: "RTA Certified",
-    gradient: "from-teal-500/20 to-accent/10",
+    gradient: "from-blue-500/20 to-accent/10",
   },
   {
     icon: Lock,
@@ -30,7 +30,7 @@ const trustItems = [
     title: "Verified Platform",
     description: "Registered Australian company with comprehensive insurance coverage.",
     badge: "ABN Verified",
-    gradient: "from-teal-500/20 to-accent/10",
+    gradient: "from-blue-500/20 to-accent/10",
   },
 ]
 
@@ -43,7 +43,7 @@ const stats = [
 
 export function TrustSection() {
   return (
-    <section id="trust" className="py-32 lg:py-40 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50 border-t border-blue-100">
+    <section id="trust" className="py-12 md:py-24 lg:py-40 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50 border-t border-blue-100">
       {/* Dynamic Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] mix-blend-multiply animate-blob" />
@@ -58,7 +58,7 @@ export function TrustSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="text-center mb-12 md:mb-24"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 shadow-[0_4px_20px_rgba(59,130,246,0.1)] text-sm font-semibold mb-8 text-blue-600 backdrop-blur-md">
             <Award className="w-4 h-4" />
@@ -67,7 +67,7 @@ export function TrustSection() {
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 text-balance leading-[1.1] tracking-tight">
             Built on Trust
             <br />
-            <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent filter drop-shadow-sm"> & Security</span>
+            <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-500 bg-clip-text text-transparent filter drop-shadow-sm"> & Security</span>
           </h2>
           <p className="mt-6 text-xl text-slate-600 max-w-2xl mx-auto text-pretty font-medium">
             Your property and data are protected by continuous, enterprise-grade security monitoring.
@@ -79,7 +79,7 @@ export function TrustSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-24"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-12 md:mb-24"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -87,12 +87,12 @@ export function TrustSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+              transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
               className="group relative"
             >
               <div className="absolute -inset-[1px] bg-gradient-to-b from-blue-200 to-sky-100 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative text-center p-8 lg:p-10 bg-white/80 backdrop-blur-2xl rounded-[2rem] border border-blue-100/50 shadow-xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 h-full flex flex-col justify-center">
-                <div className="text-4xl lg:text-5xl font-black bg-gradient-to-br from-blue-600 to-cyan-500 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500 origin-center">
+              <div className="relative text-center p-6 md:p-8 lg:p-10 bg-white/80 backdrop-blur-2xl rounded-[2rem] border border-blue-100/50 shadow-xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 h-full flex flex-col justify-center">
+                <div className="text-4xl lg:text-5xl font-black bg-gradient-to-br from-blue-600 to-blue-500 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500 origin-center">
                   {stat.value}
                 </div>
                 <div className="text-sm font-semibold text-slate-500 uppercase tracking-widest">{stat.label}</div>
@@ -111,13 +111,13 @@ export function TrustSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
               className="group relative"
             >
               {/* Premium Hover Glow */}
               <div className={`absolute -inset-0.5 bg-gradient-to-br ${item.gradient} rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-40 transition duration-500`} />
 
-              <div className="relative h-full bg-white rounded-[2rem] p-8 border border-blue-50 shadow-[0_8px_30px_rgba(59,130,246,0.06)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] transition-all duration-500 flex flex-col justify-between overflow-hidden">
+              <div className="relative h-full bg-white rounded-[2rem] p-6 md:p-8 border border-blue-50 shadow-[0_8px_30px_rgba(59,130,246,0.06)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] transition-all duration-500 flex flex-col justify-between overflow-hidden">
                 {/* Shiny reflex */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500" />
 
@@ -144,7 +144,7 @@ export function TrustSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-32 pt-16 border-t border-blue-200/60 relative"
+          className="mt-16 md:mt-32 pt-12 md:pt-16 border-t border-blue-200/60 relative"
         >
           <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 px-2 sm:px-4 bg-sky-50">
             <span className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-widest bg-white px-3 py-1.5 sm:px-4 sm:py-1.5 rounded-full border border-slate-200 shadow-sm whitespace-nowrap inline-block">

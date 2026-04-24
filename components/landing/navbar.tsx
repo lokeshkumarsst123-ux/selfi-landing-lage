@@ -6,17 +6,21 @@ import { Menu, X, Home, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const navLinks = [
-  { name: "Features", href: "#features" },
-  { name: "How It Works", href: "#forms" },
-  { name: "Intelligence", href: "#works-for-you" },
-  { name: "Trust", href: "#trust" },
+  { name: "Features", href: "/features" },
+  { name: "How It Works", href: "/how-it-works" },
+  { name: "Intelligence", href: "/#works-for-you" },
+  { name: "Trust", href: "/#trust" },
 ]
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isInnerPage = pathname !== '/'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,15 +30,17 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const useDarkHeader = isScrolled || isMobileMenuOpen || isInnerPage
+
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-2 ${isScrolled || isMobileMenuOpen
-          ? "bg-[#020617]  border-white/10 shadow-lg"
-          : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${useDarkHeader
+          ? "bg-[#020617] border-white/10 shadow-lg py-3 md:py-4 lg:py-5"
+          : "bg-transparent py-4 md:py-6 lg:py-8"
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,10 +51,9 @@ export function Navbar() {
                 <Image
                   src="/logo.svg"
                   alt="Logo"
-                  width={150}
-                  height={150}
-                  className={`w-auto object-contain transition-all duration-500 origin-left ${(isScrolled || isMobileMenuOpen) ? "h-8 lg:h-10" : "h-20 lg:h-28"
-                    }`}
+                  width={300}
+                  height={300}
+                  className={`w-auto object-contain transition-all duration-500 origin-left ${useDarkHeader ? "h-10 md:h-14 lg:h-20" : "h-16 md:h-24 lg:h-32"}`}
                 />
               </div>
             </Link>
@@ -59,7 +64,7 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors font-medium group text-slate-300 hover:text-white`}
+                  className="relative px-4 py-2 transition-colors font-medium group text-slate-300 hover:text-white"
                 >
                   {link.name}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300" />
@@ -70,7 +75,7 @@ export function Navbar() {
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <Button
-                className="font-medium bg-white text-slate-900 hover:bg-slate-100 shadow-lg hover:shadow-white/25 transition-all group"
+                className="font-medium transition-all group bg-white text-slate-900 hover:bg-slate-100 shadow-lg hover:shadow-white/25"
               >
                 Get Started
                 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform" />

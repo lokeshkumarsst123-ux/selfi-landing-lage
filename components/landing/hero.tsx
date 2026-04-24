@@ -10,7 +10,7 @@ export function Hero() {
   const [hoveredCard, setHoveredCard] = useState<"owner" | "tenant" | null>(null)
 
   return (
-    <section className="relative min-h-[100vh] flex items-center overflow-x-hidden overflow-y-visible pt-24 pb-20">
+    <section className="relative min-h-[100vh] flex items-center overflow-x-hidden overflow-y-visible pt-20 md:pt-24 pb-12 md:pb-20">
       {/* Dark gradient background with glow effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
 
@@ -31,14 +31,14 @@ export function Hero() {
       {/* Radial gradient overlay for depth */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.3),transparent)]" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-20 lg:py-32 w-full">
         <div className="text-center max-w-4xl mx-auto relative z-20">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-white/90 text-sm font-medium mb-8"
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-white/90 text-sm font-medium mb-6 md:mb-8"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
@@ -51,7 +51,7 @@ export function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight"
           >
             Property Management
@@ -64,8 +64,8 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-8 text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-6 md:mt-8 text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed"
           >
             <strong className="text-white font-semibold">Property Management Made Easy.</strong> The all-in-one AI platform that helps owners save thousands and tenants find their perfect home.
           </motion.p>
@@ -74,8 +74,8 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10 flex flex-wrap justify-center gap-4"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-8 md:mt-10 flex flex-wrap justify-center gap-4"
           >
             <Link href="#forms">
               <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-8 h-14 text-lg font-semibold group shadow-xl">
@@ -94,8 +94,8 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 flex flex-wrap justify-center gap-8 text-slate-400 text-sm"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-10 md:mt-12 flex flex-wrap justify-center gap-8 text-slate-400 text-sm"
           >
             {[
               { icon: CheckCircle, text: "No setup fees" },
@@ -160,7 +160,7 @@ export function Hero() {
               onLeave={() => setHoveredCard(null)}
               icon={User}
               title="Looking to Rent"
-              description="Find your perfect home with our AI-matched listings"
+              description="Discover your ideal home faster with AI-powered matching and verified listings"
               features={["Verified listings only", "Instant applications", "Direct owner contact"]}
               ctaText="Find a Rental"
             />
@@ -232,8 +232,8 @@ export function Hero() {
               <div className="text-2xl font-bold text-white">$2,450</div>
               <div className="text-xs text-accent mt-1">Auto-deposited to your account</div>
               <div className="mt-3 flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <CheckCircle className="w-3 h-3 text-green-400" />
+                <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center">
+                  <CheckCircle className="w-3 h-3 text-accent" />
                 </div>
                 <span className="text-xs text-slate-300">Instant transfer complete</span>
               </div>
@@ -295,11 +295,11 @@ function RoleCard({
   }
 
   const isPrimary = type === "owner"
-  const gradientFrom = isPrimary ? "from-blue-500/30" : "from-teal-400/30"
-  const gradientTo = isPrimary ? "to-blue-500/5" : "to-teal-400/5"
-  const accentColor = isPrimary ? "text-blue-400" : "text-teal-400"
-  const accentBg = isPrimary ? "bg-blue-600" : "bg-teal-500"
-  const iconBg = isPrimary ? "bg-blue-500/20" : "bg-teal-400/20"
+  const gradientFrom = isPrimary ? "from-blue-500/30" : "from-indigo-400/30"
+  const gradientTo = isPrimary ? "to-blue-500/5" : "to-indigo-400/5"
+  const accentColor = isPrimary ? "text-blue-400" : "text-indigo-400"
+  const accentBg = isPrimary ? "bg-blue-600" : "bg-indigo-500"
+  const iconBg = isPrimary ? "bg-blue-500/20" : "bg-indigo-400/20"
 
   return (
     <motion.div
