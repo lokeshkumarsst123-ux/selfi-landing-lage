@@ -7,31 +7,31 @@ const steps = [
   {
     icon: FileText,
     title: "Submit Your Form",
-    description: "Fill out our simple form with your property details or rental preferences.",
+    description: "Fill out our simple form with your property details or rental preferences. Takes less than 5 minutes.",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: UserCheck,
-    title: "Agent Reviews",
-    description: "Our local team reviews your submission and prepares for the next steps.",
-    color: "bg-accent/10 text-accent",
+    title: "Team Reviews",
+    description: "Our local team reviews your submission and contacts you within 24 hours to plan next steps.",
+    color: "bg-blue-500/10 text-blue-600",
   },
   {
     icon: Home,
     title: "Property Inspection",
-    description: "We conduct an offline inspection to verify property condition and details.",
+    description: "We conduct an offline inspection to verify the property's condition, safety, and compliance.",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: CheckCircle2,
-    title: "Approval Process",
-    description: "AI-powered matching and verification ensures the best fit for all parties.",
-    color: "bg-accent/10 text-accent",
+    title: "Match & Approval",
+    description: "We review applications and find the right match. Both owner and tenant are notified on approval.",
+    color: "bg-blue-500/10 text-blue-600",
   },
   {
     icon: KeyRound,
     title: "Account Created",
-    description: "Get your secure login credentials and full access to the platform dashboard.",
+    description: "Get your login credentials and full access to the platform. Start managing or renting right away.",
     color: "bg-primary/10 text-primary",
   },
 ]
@@ -46,11 +46,15 @@ export function ProcessSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-slate-700 text-sm font-medium mb-6">
+            <CheckCircle2 className="w-4 h-4 text-blue-600" />
+            Simple 5-Step Process
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
-            How It Works
+            From Listing to Keys in Hand
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            From application to keys in hand — our streamlined process makes property management effortless.
+            Our streamlined process makes property management effortless — for owners and tenants alike.
           </p>
         </motion.div>
 
