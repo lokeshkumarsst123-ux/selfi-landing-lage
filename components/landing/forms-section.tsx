@@ -48,25 +48,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
 
   const content = (
     <div className={`relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10 ${isModal ? "py-0" : ""}`}>
-      <motion.div
-        initial={isModal ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        whileInView={isModal ? undefined : { opacity: 1, y: 0 }}
-        animate={isModal ? { opacity: 1, y: 0 } : undefined}
-        viewport={{ once: true }}
-        className="text-center mb-10 md:mb-16"
-      >
-        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-bold tracking-wide mb-6 shadow-sm ${isModal ? "bg-blue-500/10 border-blue-500/20 text-blue-400" : "bg-white dark:bg-primary/10 border-slate-200 dark:border-primary/20 text-blue-700 dark:text-blue-400"}`}>
-          <Sparkles className="w-4 h-4" />
-          Get Started in Minutes
-        </div>
-        <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-balance mb-4 ${isModal ? "text-white" : "text-slate-900 dark:text-white"}`}>
-          Your Journey
-          <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent px-2"> Starts Here</span>
-        </h2>
-        <p className={`text-xl max-w-2xl mx-auto text-pretty font-medium leading-relaxed ${isModal ? "text-slate-300" : "text-slate-600 dark:text-slate-400"}`}>
-          Complete our simple multi-step form and we&apos;ll handle the rest.
-        </p>
-      </motion.div>
+
 
       <motion.div
         initial={isModal ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -75,14 +57,14 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
       >
-        <div className={`bg-white rounded-[2.5rem] border border-white shadow-2xl overflow-hidden relative ${isModal ? "mb-16 ring-1 ring-white/20" : "dark:bg-card/40 dark:backdrop-blur-md dark:border-white/10"}`}>
+        <div className={`bg-white rounded-[2.5rem] border border-white shadow-2xl overflow-hidden relative ${isModal ? "mb-8 ring-1 ring-white/20" : "dark:bg-card/40 dark:backdrop-blur-md dark:border-white/10"}`}>
           {/* Form Type Selector */}
-          <div className="flex justify-center p-8 border-b border-slate-100 bg-slate-50/50">
-            <div className="inline-flex bg-white rounded-full p-2 border border-slate-200 shadow-sm w-full max-w-md">
+          <div className={`flex justify-center border-b border-slate-100 bg-slate-50/50 ${isModal ? "p-4 sm:p-6" : "p-8"}`}>
+            <div className="inline-flex bg-white rounded-full p-1.5 sm:p-2 border border-slate-200 shadow-sm w-full max-w-md">
               <button
                 onClick={() => setActiveForm("owner")}
                 className={`flex-1 relative py-4 px-6 flex items-center justify-center gap-3 font-bold text-sm rounded-full transition-all duration-300 ${activeForm === "owner"
-                  ? "bg-slate-900 text-white shadow-xl scale-[1.02]"
+                  ? "bg-[#07254B] text-white shadow-xl scale-[1.02]"
                   : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                   }`}
               >
@@ -92,7 +74,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
               <button
                 onClick={() => setActiveForm("tenant")}
                 className={`flex-1 relative py-4 px-6 flex items-center justify-center gap-3 font-bold text-sm rounded-full transition-all duration-300 ${activeForm === "tenant"
-                  ? "bg-slate-900 text-white shadow-xl scale-[1.02]"
+                  ? "bg-[#07254B] text-white shadow-xl scale-[1.02]"
                   : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                   }`}
               >
@@ -102,7 +84,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
             </div>
           </div>
 
-          <div className="p-8 md:p-12 lg:p-16">
+          <div className={isModal ? "p-6 sm:p-8" : "p-8 md:p-12 lg:p-16"}>
             <AnimatePresence mode="wait">
               {activeForm === "owner" ? (
                 <motion.div
@@ -254,7 +236,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                       title="Application Submitted! 🎉"
                       message="Our team will review your application, run background checks, and be in touch within 48 hours. After approval, your tenant portal login credentials will be sent to your email."
                       onReset={resetTenantForm}
-                      color="accent"
+                      color="primary"
                     />
                   ) : (
                     <>
@@ -262,14 +244,14 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                       <div className="mb-10">
                         <div className="flex justify-between mb-3 text-center sm:text-left">
                           {["Your Info", "Preferences", "Documents"].map((label, i) => (
-                            <div key={label} className={`text-[10px] sm:text-sm font-medium ${i + 1 <= tenantStep ? "text-accent" : "text-muted-foreground"}`}>
+                            <div key={label} className={`text-[10px] sm:text-sm font-medium ${i + 1 <= tenantStep ? "text-[#07254B]" : "text-muted-foreground"}`}>
                               {label}
                             </div>
                           ))}
                         </div>
                         <div className="h-2 bg-muted rounded-full overflow-hidden">
                           <motion.div
-                            className="h-full bg-gradient-to-r from-accent to-accent/80 rounded-full"
+                            className="h-full bg-gradient-to-r from-[#07254B] to-[#07254B]/80 rounded-full"
                             initial={{ width: "0%" }}
                             animate={{ width: `${(tenantStep / 3) * 100}%` }}
                             transition={{ duration: 0.3 }}
@@ -289,7 +271,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                                 <FormField icon={CreditCard} label="Employment Status" id="tenant-employment" placeholder="Full-time employed" required />
                                 <div className="space-y-2 md:col-span-2">
                                   <label htmlFor="tenant-state" className="text-foreground font-medium text-sm">Preferred State / Territory</label>
-                                  <select id="tenant-state" className="w-full h-12 px-4 border border-border rounded-xl bg-background text-foreground text-sm focus:ring-2 focus:ring-accent/20 focus:outline-none">
+                                  <select id="tenant-state" className="w-full h-12 px-4 border border-border rounded-xl bg-background text-foreground text-sm focus:ring-2 focus:ring-[#07254B]/20 focus:outline-none">
                                     <option value="">Select a state...</option>
                                     {["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"].map((s) => <option key={s} value={s}>{s}</option>)}
                                   </select>
@@ -309,7 +291,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                                     <Label className="text-foreground font-medium">Move-in Timeline</Label>
                                     <div className="grid grid-cols-2 gap-3">
                                       {["ASAP", "1-2 weeks", "1 month", "Flexible"].map((time) => (
-                                        <label key={time} className="relative flex items-center justify-center p-3 border border-border rounded-xl cursor-pointer hover:border-accent/50 transition-colors has-[:checked]:border-accent has-[:checked]:bg-accent/5">
+                                        <label key={time} className="relative flex items-center justify-center p-3 border border-border rounded-xl cursor-pointer hover:border-[#07254B]/50 transition-colors has-[:checked]:border-[#07254B] has-[:checked]:bg-[#07254B]/5">
                                           <input type="radio" name="move-timeline" value={time} className="sr-only" defaultChecked={time === "1-2 weeks"} />
                                           <span className="text-sm font-medium text-foreground">{time}</span>
                                         </label>
@@ -321,7 +303,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                                   <Label className="text-foreground font-medium">Property Preferences</Label>
                                   <div className="flex flex-wrap gap-3">
                                     {["Pet Friendly", "Parking", "Furnished", "Balcony", "Air Con", "Gym Access"].map((pref) => (
-                                      <label key={pref} className="relative flex items-center gap-2 px-4 py-2 border border-border rounded-full cursor-pointer hover:border-accent/50 transition-colors has-[:checked]:border-accent has-[:checked]:bg-accent/10">
+                                      <label key={pref} className="relative flex items-center gap-2 px-4 py-2 border border-border rounded-full cursor-pointer hover:border-[#07254B]/50 transition-colors has-[:checked]:border-[#07254B] has-[:checked]:bg-[#07254B]/10">
                                         <input type="checkbox" name="preferences" value={pref} className="sr-only" />
                                         <span className="text-sm font-medium text-foreground">{pref}</span>
                                       </label>
@@ -336,15 +318,15 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                             <StepContent key="tenant-step-3">
                               <h3 className="text-2xl font-bold text-foreground mb-6">Supporting Documents</h3>
                               <div className="space-y-6">
-                                <div className="border-2 border-dashed border-border rounded-2xl p-10 text-center hover:border-accent/50 transition-colors cursor-pointer bg-muted/20">
+                                <div className="border-2 border-dashed border-border rounded-2xl p-10 text-center hover:border-[#07254B]/50 transition-colors cursor-pointer bg-muted/20">
                                   <FileText className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
                                   <p className="text-muted-foreground">
                                     Upload ID, payslips, and references
                                   </p>
-                                  <p className="text-sm text-accent font-medium mt-2">Browse files</p>
+                                  <p className="text-sm text-[#07254B] font-medium mt-2">Browse files</p>
                                   <p className="text-xs text-muted-foreground mt-2">PDF, JPG, PNG up to 10MB each</p>
                                 </div>
-                                <div className="bg-gradient-to-r from-accent/10 to-accent/5 rounded-2xl p-6 border border-accent/20">
+                                <div className="bg-gradient-to-r from-[#07254B]/10 to-[#07254B]/5 rounded-2xl p-6 border border-[#07254B]/20">
                                   <div className="flex items-center justify-between">
                                     <div>
                                       <p className="font-semibold text-foreground">Application Fee</p>
@@ -366,7 +348,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                               Back
                             </Button>
                           )}
-                          <Button type="submit" size="lg" className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground group">
+                          <Button type="submit" size="lg" className="flex-1 bg-[#07254B] hover:bg-[#07254B]/90 text-white group">
                             {tenantStep === 3 ? "Submit Application" : "Continue"}
                             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                           </Button>
@@ -459,9 +441,9 @@ function SuccessMessage({
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-        className={`w-24 h-24 mx-auto rounded-full ${color === "primary" ? "bg-primary/10" : "bg-accent/10"} flex items-center justify-center mb-8`}
+        className={`w-24 h-24 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-8`}
       >
-        <CheckCircle className={`w-12 h-12 ${color === "primary" ? "text-primary" : "text-accent"}`} />
+        <CheckCircle className={`w-12 h-12 text-primary`} />
       </motion.div>
       <h3 className="text-3xl font-bold text-foreground mb-3">{title}</h3>
       <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">{message}</p>

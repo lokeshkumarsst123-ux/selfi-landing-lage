@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 import { Building, User, ArrowRight, Upload, ClipboardCheck, Key, Search, FileCheck, Home, UserCheck, MapPin, DollarSign, MessageCircle, CheckCircle, Star } from "lucide-react"
 
 type JourneyType = "owner" | "tenant"
@@ -90,23 +91,32 @@ export function UserJourneys({ initialJourney }: { initialJourney?: JourneyType 
     <section id="journeys" className="py-16 md:py-24 lg:py-40 relative overflow-hidden bg-slate-50/80 border-y border-border/40">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 via-transparent to-blue-100/40" />
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }} 
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.5, 0.2] }} 
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none" 
+      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-10 md:mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-sm font-medium mb-6">
             <ArrowRight className="w-4 h-4" />
             Simple 4-Step Journey
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground text-balance leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-[4rem] font-extrabold text-foreground text-balance leading-[1.05] tracking-tight">
             Your Journey,
-            <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent"> Made Easy</span>
+            <span className="bg-gradient-to-r from-primary to-[#17539c] bg-clip-text text-transparent px-2"> Made Easy</span>
           </h2>
           <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
             Whether you own or rent — our verified platform keeps it safe, transparent, and simple every step of the way.
@@ -118,23 +128,41 @@ export function UserJourneys({ initialJourney }: { initialJourney?: JourneyType 
           <div className="inline-flex bg-muted/60 rounded-2xl p-1.5 border border-border/50">
             <button
               onClick={() => { setActiveJourney("owner"); setActiveStep(0); }}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${activeJourney === "owner"
-                ? "bg-card text-primary shadow-lg border border-primary/20"
+              className={`relative flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${activeJourney === "owner"
+                ? "text-primary"
                 : "text-muted-foreground hover:text-foreground"
                 }`}
             >
-              <Building className="w-5 h-5" />
-              Property Owner
+              {activeJourney === "owner" && (
+                <motion.div
+                  layoutId="active-journey-pill"
+                  className="absolute inset-0 bg-card shadow-lg border border-primary/20 rounded-xl"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <div className="relative z-10 flex items-center gap-2">
+                <Building className="w-5 h-5" />
+                Property Owner
+              </div>
             </button>
             <button
               onClick={() => { setActiveJourney("tenant"); setActiveStep(0); }}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${activeJourney === "tenant"
-                ? "bg-card text-blue-600 shadow-lg border border-blue-500/20"
+              className={`relative flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${activeJourney === "tenant"
+                ? "text-blue-600"
                 : "text-muted-foreground hover:text-foreground"
                 }`}
             >
-              <User className="w-5 h-5" />
-              Looking to Rent
+              {activeJourney === "tenant" && (
+                <motion.div
+                  layoutId="active-journey-pill"
+                  className="absolute inset-0 bg-card shadow-lg border border-blue-500/20 rounded-xl"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <div className="relative z-10 flex items-center gap-2">
+                <User className="w-5 h-5" />
+                Looking to Rent
+              </div>
             </button>
           </div>
         </div>
@@ -145,10 +173,10 @@ export function UserJourneys({ initialJourney }: { initialJourney?: JourneyType 
             {steps.map((step, index) => (
               <motion.button
                 key={step.title}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => setActiveStep(index)}
                 className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${activeStep === index
                   ? activeJourney === "owner"
@@ -210,11 +238,19 @@ export function UserJourneys({ initialJourney }: { initialJourney?: JourneyType 
                 <button
                   key={index}
                   onClick={() => setActiveStep(index)}
-                  className={`h-2 rounded-full transition-all ${activeStep === index
-                    ? `w-8 ${activeJourney === "owner" ? "bg-primary" : "bg-blue-600"}`
+                  className={`relative h-2 rounded-full transition-all duration-300 ${activeStep === index
+                    ? "w-8"
                     : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                     }`}
-                />
+                >
+                  {activeStep === index && (
+                    <motion.div
+                      layoutId="active-journey-dot"
+                      className={`absolute inset-0 rounded-full ${activeJourney === "owner" ? "bg-primary" : "bg-blue-600"}`}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </button>
               ))}
             </div>
           </div>
@@ -239,10 +275,10 @@ function JourneyVisual({ type, step }: { type: JourneyType; step: string }) {
 
         <div className="grid grid-cols-2 gap-4">
           {[
-            { suburb: "Bondi, NSW", rent: "$750/wk", beds: 2, badge: "Verified" },
-            { suburb: "St Kilda, VIC", rent: "$620/wk", beds: 2, badge: "Available" },
-            { suburb: "New Farm, QLD", rent: "$580/wk", beds: 3, badge: "New" },
-            { suburb: "Fremantle, WA", rent: "$490/wk", beds: 2, badge: "Inspected" },
+            { suburb: "Bondi, NSW", rent: "$750/wk", beds: 2, badge: "Verified", image: "/property-luxury-house.png" },
+            { suburb: "St Kilda, VIC", rent: "$620/wk", beds: 2, badge: "Available", image: "/property-apartment.png" },
+            { suburb: "New Farm, QLD", rent: "$580/wk", beds: 3, badge: "New", image: "/property-lakehouse.png" },
+            { suburb: "Fremantle, WA", rent: "$490/wk", beds: 2, badge: "Inspected", image: "/property-luxury-house.png" },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -252,8 +288,8 @@ function JourneyVisual({ type, step }: { type: JourneyType; step: string }) {
               className="bg-muted/50 rounded-xl p-4"
             >
               <div className="aspect-video bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
-                <Home className="w-8 h-8 text-primary/30" />
-                <span className="absolute top-2 left-2 text-[10px] font-bold bg-green-500 text-white px-2 py-0.5 rounded-full">{item.badge}</span>
+                <Image src={item.image} alt={item.suburb} fill className="object-cover" />
+                <span className="absolute top-2 left-2 text-[10px] font-bold bg-green-500 text-white px-2 py-0.5 rounded-full z-10">{item.badge}</span>
               </div>
               <div className="text-xs font-semibold text-foreground mb-0.5">{item.suburb}</div>
               <div className="text-xs text-muted-foreground">{item.rent} · {item.beds} bed</div>

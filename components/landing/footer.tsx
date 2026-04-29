@@ -59,7 +59,7 @@ export function Footer() {
                   placeholder="Enter your email"
                   className="w-full bg-white border border-slate-200 rounded-full pl-6 pr-32 py-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500/50 transition-all font-medium shadow-sm"
                 />
-                <button className="absolute right-1.5 top-1.5 bottom-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-full px-6 font-bold transition-all shadow-md">
+                <button className="absolute right-1.5 top-1.5 bottom-1.5 bg-[#07254B] hover:bg-[#07254B]/90 text-white rounded-full px-6 font-bold transition-all shadow-md">
                   Join
                 </button>
               </div>
@@ -107,16 +107,16 @@ export function Footer() {
               <ul className="space-y-6 text-slate-500 font-bold transition-colors">
                 <li>
                   <a href="mailto:hello@self-i.au" className="flex items-center gap-3 hover:text-slate-900 transition-colors group">
-                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-                      <Mail className="w-4 h-4 text-slate-500 group-hover:text-blue-600 transition-colors" />
+                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-[#07254B]/10 transition-colors">
+                      <Mail className="w-4 h-4 text-slate-500 group-hover:text-[#07254B] transition-colors" />
                     </div>
                     hello@self-i.au
                   </a>
                 </li>
                 <li>
                   <a href="tel:1800PROPFLOW" className="flex items-center gap-3 hover:text-slate-900 transition-colors group">
-                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-                      <Phone className="w-4 h-4 text-slate-500 group-hover:text-blue-600 transition-colors" />
+                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-[#07254B]/10 transition-colors">
+                      <Phone className="w-4 h-4 text-slate-500 group-hover:text-[#07254B] transition-colors" />
                     </div>
                     1800 XXXXX
                   </a>
@@ -146,7 +146,7 @@ export function Footer() {
               <Link
                 key={social.label}
                 href={social.href}
-                className="w-10 h-10 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                className="w-10 h-10 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-[#07254B] hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 aria-label={social.label}
               >
                 <social.icon className="w-4 h-4" />

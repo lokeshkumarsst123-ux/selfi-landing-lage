@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Outfit } from 'next/font/google'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 
 import './globals.css'
 
-const outfit = Outfit({
+const font = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-outfit"
+  variable: "--font-sans"
 });
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background scroll-smooth">
-      <body className={`${outfit.variable} font-sans antialiased`}>
+      <body className={`${font.variable} font-sans antialiased`}>
         {children}
 
       </body>
