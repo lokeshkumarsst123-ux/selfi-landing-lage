@@ -1,34 +1,34 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Building2, User, Wrench, Smartphone, Download, Apple } from "lucide-react"
+import { Building2, User, Wrench, Smartphone, Apple } from "lucide-react"
 
 const apps = [
     {
         title: "Owner App",
         icon: Building2,
-        description: "Your complete control center. List properties, automate rent collection, and approve maintenance requests instantly.",
+        description: "Your complete property control centre. List properties, collect rent automatically, screen applicants, and approve maintenance — all in one simple dashboard.",
         color: "from-blue-500 to-blue-400",
         shadowColor: "shadow-blue-500/20",
-        features: ["Property Listings", "Rent Tracking", "Applicant Screening"],
+        features: ["Property Listings", "Rent Tracking", "Tenant Screening"],
         delay: 0.1
     },
     {
         title: "Tenant App",
         icon: User,
-        description: "The modern renting experience. Find your perfect home, pay rent on autopilot, and report issues with a tap.",
-        color: "from-blue-400 to-blue-400",
+        description: "The modern renting experience. Browse verified homes, pay rent with a tap, report maintenance issues, and stay in touch with your owner directly.",
+        color: "from-blue-400 to-indigo-500",
         shadowColor: "shadow-blue-500/20",
-        features: ["AI Property Match", "Digital Lease", "1-Tap Maintenance"],
+        features: ["Verified Listings", "Digital Lease", "1-Tap Maintenance"],
         delay: 0.2
     },
     {
-        title: "Tradeperson App",
+        title: "Tradesperson App",
         icon: Wrench,
-        description: "Get jobs, not headaches. Receive local maintenance requests, submit quotes, and get paid fast without paperwork.",
+        description: "Get jobs without the headache. Receive local maintenance requests, submit quotes, and get paid fast — no paperwork, no delays.",
         color: "from-amber-400 to-orange-500",
         shadowColor: "shadow-orange-500/20",
-        features: ["Job Requests", "Smart Quoting", "Guaranteed Payouts"],
+        features: ["Job Requests", "Fast Quoting", "Guaranteed Payouts"],
         delay: 0.3
     }
 ]
@@ -36,7 +36,7 @@ const apps = [
 export function AppEcosystem() {
     return (
         <section className="py-16 md:py-24 lg:py-32 bg-slate-50 relative overflow-hidden border-y border-slate-200/50">
-            {/* Elegant light mode gradients */}
+            {/* Background */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-slate-100 to-transparent pointer-events-none" />
             <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-400/10 rounded-full blur-[80px] pointer-events-none" />
             <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-[80px] pointer-events-none" />
@@ -50,13 +50,13 @@ export function AppEcosystem() {
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-slate-700 text-sm font-medium mb-6">
                         <Smartphone className="w-4 h-4" />
-                        3 Connected Mobile Apps
+                        3 Connected Apps
                     </div>
                     <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 text-balance mb-4">
-                        One Unified Ecosystem
+                        One Unified Platform
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Self-i seamlessly connects owners, tenants, and tradepersons through beautifully designed, specialized mobile applications.
+                        Self-i connects owners, tenants, and tradespersons through purpose-built mobile apps — designed to make every interaction simple.
                     </p>
                 </motion.div>
 
