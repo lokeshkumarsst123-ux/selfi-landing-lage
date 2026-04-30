@@ -275,10 +275,10 @@ function JourneyVisual({ type, step }: { type: JourneyType; step: string }) {
 
         <div className="grid grid-cols-2 gap-4">
           {[
-            { suburb: "Bondi, NSW", rent: "$750/wk", beds: 2, badge: "Verified", image: "/property-luxury-house.png" },
-            { suburb: "St Kilda, VIC", rent: "$620/wk", beds: 2, badge: "Available", image: "/property-apartment.png" },
-            { suburb: "New Farm, QLD", rent: "$580/wk", beds: 3, badge: "New", image: "/property-lakehouse.png" },
-            { suburb: "Fremantle, WA", rent: "$490/wk", beds: 2, badge: "Inspected", image: "/property-luxury-house.png" },
+            { suburb: "Bondi, NSW", rent: "$750/wk", beds: 2, badge: "Verified", image: "/hero_img2.svg" },
+            { suburb: "St Kilda, VIC", rent: "$620/wk", beds: 2, badge: "Available", image: "/hero_img2.svg" },
+            { suburb: "New Farm, QLD", rent: "$580/wk", beds: 3, badge: "New", image: "/hero_img2.svg" },
+            { suburb: "Fremantle, WA", rent: "$490/wk", beds: 2, badge: "Inspected", image: "/hero_img2.svg" },
           ].map((item, i) => (
             <motion.div
               key={i}

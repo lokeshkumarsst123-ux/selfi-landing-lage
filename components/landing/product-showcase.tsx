@@ -115,15 +115,15 @@ export function ProductShowcase() {
             >
               {/* Back Left Phone */}
               <div className="absolute left-[5%] sm:left-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] -rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/property-luxury-house.png" alt="Owner App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/hero_img2.svg" alt="Owner App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Back Right Phone */}
               <div className="absolute right-[5%] sm:right-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/property-luxury-house.png" alt="Owner App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/hero_img2.svg" alt="Owner App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Front Center Phone */}
               <div className="relative z-30 w-48 sm:w-64 lg:w-72 aspect-[9/19] shadow-[0_40px_80px_rgba(0,0,0,0.2)] rounded-[2.5rem] border-[10px] border-slate-900 bg-slate-900 overflow-hidden">
-                <Image src="/property-luxury-house.png" alt="Owner App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/hero_img2.svg" alt="Owner App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </motion.div>
@@ -146,15 +146,15 @@ export function ProductShowcase() {
             >
               {/* Back Left Phone */}
               <div className="absolute left-[5%] sm:left-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] -rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/property-apartment.png" alt="Tenant App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/hero_img2.svg" alt="Tenant App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Back Right Phone */}
               <div className="absolute right-[5%] sm:right-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/property-apartment.png" alt="Tenant App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/hero_img2.svg" alt="Tenant App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Front Center Phone */}
               <div className="relative z-30 w-48 sm:w-64 lg:w-72 aspect-[9/19] shadow-[0_40px_80px_rgba(0,0,0,0.2)] rounded-[2.5rem] border-[10px] border-slate-900 bg-slate-900 overflow-hidden">
-                <Image src="/property-apartment.png" alt="Tenant App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/hero_img2.svg" alt="Tenant App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </motion.div>
