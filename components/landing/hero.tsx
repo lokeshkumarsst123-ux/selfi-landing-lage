@@ -14,15 +14,15 @@ export function Hero() {
     <section className="relative min-h-[100vh] flex items-center overflow-hidden pt-20 md:pt-24 pb-12 md:pb-20 bg-[#f8fafc]">
       {/* Premium Accent Glows (Light Mode) */}
       <div className="absolute top-0 left-0 right-0 h-screen overflow-hidden pointer-events-none z-0">
-        <motion.div 
-          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }} 
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-10%] left-[-5%] w-[60%] h-[60%] rounded-full bg-blue-400/20 blur-[120px]" 
+          className="absolute top-[-10%] left-[-5%] w-[60%] h-[60%] rounded-full bg-blue-400/20 blur-[120px]"
         />
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} 
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-400/20 blur-[120px]" 
+          className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-400/20 blur-[120px]"
         />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(59,130,246,0.03),transparent_70%)]" />
       </div>
@@ -181,7 +181,7 @@ export function Hero() {
                     <span className="text-xs font-bold text-slate-700">Maintenance App</span>
                   </div>
                   <Image
-                    src="/hero_img2.svg"
+                    src="/hero_img3.svg"
                     alt="Maintenance App"
                     width={400}
                     height={800}
@@ -202,7 +202,7 @@ export function Hero() {
                     <span className="text-sm font-bold text-white tracking-wide">Owner App</span>
                   </div>
                   <Image
-                    src="/hero_img2.svg"
+                    src="/hero_img1.svg"
                     alt="Owner App"
                     width={400}
                     height={800}

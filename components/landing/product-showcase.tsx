@@ -8,24 +8,24 @@ export function ProductShowcase() {
   return (
     <section className="py-16 md:py-24 lg:py-32 relative overflow-hidden bg-[#f8fafc]">
       {/* Background blurs */}
-      <motion.div 
-        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }} 
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" 
+        className="absolute top-[10%] left-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none"
       />
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute top-[50%] right-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[140px] pointer-events-none" 
+        className="absolute top-[50%] right-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[140px] pointer-events-none"
       />
-      <motion.div 
-        animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.5, 0.2] }} 
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-0 left-[20%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" 
+        className="absolute bottom-0 left-[20%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 md:space-y-48">
-        
+
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -66,7 +66,7 @@ export function ProductShowcase() {
             <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium">
               Take complete control of your property portfolio from your pocket. Track rent payments, approve maintenance requests, and review tenant applications in seconds.
             </p>
-            <motion.div 
+            <motion.div
               className="space-y-5"
               initial="hidden"
               whileInView="visible"
@@ -80,8 +80,8 @@ export function ProductShowcase() {
                 { icon: LayoutDashboard, title: "Portfolio Analytics", desc: "Real-time insights into your yield and expenses." },
                 { icon: CheckCircle, title: "One-Click Approvals", desc: "Approve tradie quotes and tenant applications instantly." },
               ].map((feature, i) => (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   variants={{
                     hidden: { opacity: 0, x: -20 },
                     visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
@@ -108,22 +108,22 @@ export function ProductShowcase() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center order-1 lg:order-2"
           >
-            <motion.div 
-              whileHover={{ scale: 1.05, y: -10 }} 
+            <motion.div
+              whileHover={{ scale: 1.05, y: -10 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="relative w-full max-w-lg flex items-center justify-center cursor-pointer"
             >
               {/* Back Left Phone */}
               <div className="absolute left-[5%] sm:left-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] -rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/hero_img2.svg" alt="Owner App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/o-2.svg" alt="Owner App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Back Right Phone */}
               <div className="absolute right-[5%] sm:right-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/hero_img2.svg" alt="Owner App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/o-3.svg" alt="Owner App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Front Center Phone */}
               <div className="relative z-30 w-48 sm:w-64 lg:w-72 aspect-[9/19] shadow-[0_40px_80px_rgba(0,0,0,0.2)] rounded-[2.5rem] border-[10px] border-slate-900 bg-slate-900 overflow-hidden">
-                <Image src="/hero_img2.svg" alt="Owner App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="o-1.svg" alt="Owner App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </motion.div>
@@ -139,8 +139,8 @@ export function ProductShowcase() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center"
           >
-            <motion.div 
-              whileHover={{ scale: 1.05, y: -10 }} 
+            <motion.div
+              whileHover={{ scale: 1.05, y: -10 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="relative w-full max-w-lg flex items-center justify-center cursor-pointer"
             >
@@ -176,7 +176,7 @@ export function ProductShowcase() {
             <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium">
               The modern way to rent. Keep track of your lease, securely pay rent via the app, and instantly report maintenance issues with photos and videos.
             </p>
-            <motion.div 
+            <motion.div
               className="space-y-5"
               initial="hidden"
               whileInView="visible"
@@ -190,8 +190,8 @@ export function ProductShowcase() {
                 { icon: Zap, title: "1-Click Applications", desc: "Create a profile once and apply to multiple properties." },
                 { icon: MessageSquare, title: "Direct Communication", desc: "Chat with the owner or tradies directly in-app." },
               ].map((feature, i) => (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   variants={{
                     hidden: { opacity: 0, x: -20 },
                     visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
@@ -230,7 +230,7 @@ export function ProductShowcase() {
             <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium">
               Say goodbye to chasing invoices. Receive job requests from owners, submit quotes on the spot, and get paid directly through the app once the job is done.
             </p>
-            <motion.div 
+            <motion.div
               className="space-y-5"
               initial="hidden"
               whileInView="visible"
@@ -244,8 +244,8 @@ export function ProductShowcase() {
                 { icon: FileText, title: "Instant Quoting", desc: "Generate and send professional quotes directly to owners." },
                 { icon: Bell, title: "Get Paid Faster", desc: "Automated payouts directly to your bank account." },
               ].map((feature, i) => (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   variants={{
                     hidden: { opacity: 0, x: -20 },
                     visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
@@ -272,8 +272,8 @@ export function ProductShowcase() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center order-1 lg:order-2"
           >
-            <motion.div 
-              whileHover={{ scale: 1.05, y: -10 }} 
+            <motion.div
+              whileHover={{ scale: 1.05, y: -10 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="relative w-full max-w-lg flex items-center justify-center cursor-pointer"
             >
