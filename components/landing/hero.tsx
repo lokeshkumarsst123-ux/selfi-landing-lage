@@ -87,7 +87,7 @@ export function Hero() {
               <Link href="#forms">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button size="lg" className="bg-[#07254B] text-white hover:bg-[#07254B]/90 px-8 h-14 text-base font-bold group shadow-[0_0_20px_rgba(7,37,75,0.3)] hover:shadow-[#07254B]/50 rounded-xl transition-all">
-                    Book a Schedule
+                    Book an Agent
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </motion.div>

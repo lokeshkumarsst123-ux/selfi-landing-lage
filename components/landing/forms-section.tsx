@@ -200,7 +200,7 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
                             </Button>
                           )}
                           <Button type="submit" size="lg" className="flex-1 bg-[#07254B] hover:bg-[#07254B]/90 text-white group">
-                            {ownerStep === 3 ? "Submit Property" : "Continue"}
+                            {ownerStep === 3 ? "Book Agent & Submit" : "Next Step"}
                             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                           </Button>
                         </div>
@@ -333,7 +333,7 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
                             </Button>
                           )}
                           <Button type="submit" size="lg" className="flex-1 bg-[#07254B] hover:bg-[#07254B]/90 text-white group">
-                            {tenantStep === 3 ? "Submit Application" : "Continue"}
+                            {tenantStep === 3 ? "Book Agent & Apply" : "Next Step"}
                             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                           </Button>
                         </div>
