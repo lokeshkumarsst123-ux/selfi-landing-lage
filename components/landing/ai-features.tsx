@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
@@ -23,7 +23,7 @@ const platformFeatures = [
   },
   {
     icon: Wrench,
-    title: "Maintenance Requests",
+    title: "tradesperson requests",
     description: "Tenants report issues directly in the app. You approve quotes, track progress, and pay tradies all in one place.",
     stat: "48 hrs",
     statLabel: "Average Resolution",
@@ -234,3 +234,4 @@ function ComplianceViz({ isActive }: { isActive: boolean }) {
     </div>
   )
 }
+

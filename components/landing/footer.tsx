@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { Home, Mail, Phone, MapPin } from "lucide-react"
 import Link from "next/link"
@@ -158,3 +158,4 @@ export function Footer() {
     </footer>
   )
 }
+

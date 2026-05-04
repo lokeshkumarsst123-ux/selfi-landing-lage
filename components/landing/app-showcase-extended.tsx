@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { Smartphone, Bell, Search, ShieldCheck, Zap, Download } from "lucide-react"
@@ -9,7 +9,7 @@ const features = [
     {
         icon: Bell,
         title: "Instant Notifications",
-        description: "Get real-time alerts for rent payments, maintenance requests, and tenant messages.",
+        description: "Get real-time alerts for rent payments, tradesperson requests, and tenant messages.",
     },
     {
         icon: Search,
@@ -161,3 +161,4 @@ export function AppShowcaseExtended() {
         </section>
     )
 }
+

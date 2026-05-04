@@ -11,7 +11,7 @@ type FormType = "owner" | "tenant"
 type OwnerStep = 1 | 2 | 3
 type TenantStep = 1 | 2 | 3
 
-export function FormsSection({ isModal = false, initialForm = "owner", hideRoleSelector = false }: { isModal?: boolean, initialForm?: "owner" | "tenant", hideRoleSelector?: boolean }) {
+export function FormsSection({ isModal = false, initialForm = "owner", hideRoleSelector = false, appointmentDate, appointmentTime }: { isModal?: boolean, initialForm?: "owner" | "tenant", hideRoleSelector?: boolean, appointmentDate?: string, appointmentTime?: string }) {
   const [activeForm, setActiveForm] = useState<FormType>(initialForm)
   const [ownerStep, setOwnerStep] = useState<OwnerStep>(1)
   const [tenantStep, setTenantStep] = useState<TenantStep>(1)
@@ -102,8 +102,10 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
                 >
                   {ownerFormSubmitted ? (
                     <SuccessMessage
-                      title="Property Submitted! 🎉"
-                      message="Our team will review your details within 24 hours. We'll call you to schedule an offline property inspection. Once verified, your owner login credentials will be created."
+                      title="Booking Confirmed! 🎉"
+                      message="Your appointment with the agent is successfully scheduled. You will receive a confirmation call or notification shortly with further details. Our team will assist you throughout the process to ensure a smooth experience."
+                      appointmentDate={appointmentDate}
+                      appointmentTime={appointmentTime}
                       onReset={resetOwnerForm}
                       color="primary"
                     />
@@ -177,17 +179,28 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
 
                           {ownerStep === 3 && (
                             <StepContent key="owner-step-3">
-                              <h3 className="text-2xl font-bold text-foreground mb-6">Agent Fees</h3>
-                              <div className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
-                                <div className="flex items-center justify-between">
+                              <h3 className="text-2xl font-bold text-foreground mb-6">Agent Consultation Fee</h3>
+
+                              {/* Agent Consultation Fee */}
+                              <div className="rounded-2xl border-2 border-[#07254B]/20 bg-gradient-to-br from-[#07254B]/5 to-white overflow-hidden mb-5">
+                                <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-[#07254B]/10">
                                   <div>
-                                    <p className="font-semibold text-foreground">Agent Fees</p>
-                                    <p className="text-sm text-muted-foreground">Standard management fee</p>
+
+                                    <p className="font-bold text-foreground text-lg">Agent Consultation Fee</p>
+                                    <p className="text-sm text-muted-foreground">Standard consultation charge</p>
                                   </div>
-                                  <div className="text-3xl font-bold text-foreground">5%</div>
+                                  <div className="text-right">
+                                    <div className="text-4xl font-black text-[#07254B]">$50</div>
+                                    <div className="text-xs text-muted-foreground font-medium">AUD</div>
+                                  </div>
                                 </div>
-                                <p className="text-xs text-muted-foreground mt-3">Covers rent collection, tenant management, and maintenance coordination</p>
+                                <div className="px-6 py-4">
+                                  <p className="text-sm text-muted-foreground">Covers initial consultation, property assessment, rental strategy discussion, and onboarding guidance.</p>
+                                </div>
                               </div>
+
+                              {/* Management Fee */}
+
                             </StepContent>
                           )}
                         </AnimatePresence>
@@ -217,8 +230,10 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
                 >
                   {tenantFormSubmitted ? (
                     <SuccessMessage
-                      title="Application Submitted! 🎉"
-                      message="Our team will review your application, run background checks, and be in touch within 48 hours. After approval, your tenant portal login credentials will be sent to your email."
+                      title="Booking Confirmed! 🎉"
+                      message="Your tenant consultation with the agent is successfully scheduled. Our agent will guide you through property matches, application review, and move-in support. You'll receive a confirmation shortly."
+                      appointmentDate={appointmentDate}
+                      appointmentTime={appointmentTime}
                       onReset={resetTenantForm}
                       color="primary"
                     />
@@ -253,13 +268,7 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
                                 <FormField icon={Mail} label="Email Address" id="tenant-email" type="email" placeholder="jane@example.com" required />
                                 <FormField icon={Phone} label="Phone Number" id="tenant-phone" type="tel" placeholder="+61 400 000 000" required />
                                 <FormField icon={CreditCard} label="Employment Status" id="tenant-employment" placeholder="Full-time employed" required />
-                                <div className="space-y-2 md:col-span-2">
-                                  <label htmlFor="tenant-state" className="text-foreground font-medium text-sm">Preferred State / Territory</label>
-                                  <select id="tenant-state" className="w-full h-12 px-4 border border-border rounded-xl bg-background text-foreground text-sm focus:ring-2 focus:ring-[#07254B]/20 focus:outline-none">
-                                    <option value="">Select a state...</option>
-                                    {["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"].map((s) => <option key={s} value={s}>{s}</option>)}
-                                  </select>
-                                </div>
+
                               </div>
                             </StepContent>
                           )}
@@ -310,15 +319,22 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
                                   <p className="text-sm text-[#07254B] font-medium mt-2">Browse files</p>
                                   <p className="text-xs text-muted-foreground mt-2">PDF, JPG, PNG up to 10MB each</p>
                                 </div>
-                                <div className="bg-gradient-to-r from-[#07254B]/10 to-[#07254B]/5 rounded-2xl p-6 border border-[#07254B]/20">
-                                  <div className="flex items-center justify-between">
+                                {/* Agent Consultation Fee - Tenant */}
+                                <div className="rounded-2xl border-2 border-[#07254B]/20 bg-gradient-to-br from-[#07254B]/5 to-white overflow-hidden">
+                                  <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-[#07254B]/10">
                                     <div>
-                                      <p className="font-semibold text-foreground">Application Fee</p>
-                                      <p className="text-sm text-muted-foreground">One-time processing fee</p>
+                                      <p className="text-xs font-bold uppercase tracking-widest text-[#07254B]/70 mb-1">Agent Consultation Fee</p>
+                                      <p className="font-bold text-foreground text-lg">Agent Consultation Fee</p>
+                                      <p className="text-sm text-muted-foreground">Standard consultation charge</p>
                                     </div>
-                                    <div className="text-3xl font-bold text-foreground">$25</div>
+                                    <div className="text-right">
+                                      <div className="text-4xl font-black text-[#07254B]">$35</div>
+                                      <div className="text-xs text-muted-foreground font-medium">AUD</div>
+                                    </div>
                                   </div>
-                                  <p className="text-xs text-muted-foreground mt-3">Covers background check, credit verification, and matching</p>
+                                  <div className="px-6 py-4">
+                                    <p className="text-sm text-muted-foreground">Covers tenant consultation, property matching, rental application guidance, and agent support during the move-in process.</p>
+                                  </div>
                                 </div>
                               </div>
                             </StepContent>
@@ -408,32 +424,46 @@ function SuccessMessage({
   title,
   message,
   onReset,
-  color
+  color,
+  appointmentDate,
+  appointmentTime
 }: {
   title: string
   message: string
   onReset: () => void
   color: "primary" | "accent"
+  appointmentDate?: string
+  appointmentTime?: string
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="text-center py-16"
+      className="text-center py-10"
     >
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-        className={`w-24 h-24 mx-auto rounded-full bg-[#07254B]/10 flex items-center justify-center mb-8`}
+        className={`w-20 h-20 mx-auto rounded-full bg-[#07254B]/10 flex items-center justify-center mb-6`}
       >
-        <CheckCircle className={`w-12 h-12 text-[#07254B]`} />
+        <CheckCircle className={`w-10 h-10 text-[#07254B]`} />
       </motion.div>
-      <h3 className="text-3xl font-bold text-foreground mb-3">{title}</h3>
-      <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">{message}</p>
+      <h3 className="text-2xl font-bold text-foreground mb-3">{title}</h3>
+
+      {/* Appointment Date & Time chip */}
+      {appointmentDate && appointmentTime && (
+        <div className="inline-flex items-center gap-2 bg-[#07254B]/5 border border-[#07254B]/20 text-[#07254B] px-4 py-2 rounded-full text-sm font-semibold mb-5">
+          <CheckCircle className="w-4 h-4" />
+          {appointmentDate} &nbsp;·&nbsp; {appointmentTime}
+        </div>
+      )}
+
+      <p className="text-base text-muted-foreground mb-8 max-w-md mx-auto">{message}</p>
       <Button onClick={onReset} size="lg" className="bg-[#07254B] hover:bg-[#07254B]/90 text-white shadow-md font-medium px-8">
-        Submit Another
+        Book Another
       </Button>
     </motion.div>
   )
 }
+

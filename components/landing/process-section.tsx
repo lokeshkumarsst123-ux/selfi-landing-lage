@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { FileText, UserCheck, Home, CheckCircle2, KeyRound } from "lucide-react"
@@ -95,3 +95,4 @@ export function ProcessSection() {
     </section>
   )
 }
+
