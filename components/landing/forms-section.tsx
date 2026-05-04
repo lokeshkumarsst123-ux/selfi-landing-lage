@@ -314,10 +314,10 @@ export function FormsSection({ isModal = false, initialForm = "owner", hideRoleS
                                 <div className="border-2 border-dashed border-border rounded-2xl p-10 text-center hover:border-[#07254B]/50 transition-colors cursor-pointer bg-muted/20">
                                   <FileText className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
                                   <p className="text-muted-foreground">
-                                    Upload ID, payslips, and references
+                                    Upload Government Identity Proof
                                   </p>
                                   <p className="text-sm text-[#07254B] font-medium mt-2">Browse files</p>
-                                  <p className="text-xs text-muted-foreground mt-2">PDF, JPG, PNG up to 10MB each</p>
+                                  <p className="text-xs text-muted-foreground mt-2">PDF, JPG, PNG </p>
                                 </div>
                                 {/* Agent Consultation Fee - Tenant */}
                                 <div className="rounded-2xl border-2 border-[#07254B]/20 bg-gradient-to-br from-[#07254B]/5 to-white overflow-hidden">

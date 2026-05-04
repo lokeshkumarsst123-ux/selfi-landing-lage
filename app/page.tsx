@@ -10,22 +10,26 @@ import { AppShowcaseExtended } from "@/components/landing/app-showcase-extended"
 import { TrustSection } from "@/components/landing/trust-section"
 import { FinalCTA } from "@/components/landing/final-cta"
 import { Footer } from "@/components/landing/footer"
+import { PageLoader } from "@/components/landing/page-loader"
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <ValueProps />
-      <ProductShowcase />
-      <UserJourneys />
-      <AIFeatures />
-      <PlatformShowcase />
-      <AppEcosystem />
-      <AppShowcaseExtended />
-      <TrustSection />
-      <FinalCTA />
-      <Footer />
-    </main>
+    <>
+      <PageLoader />
+      <main className="min-h-screen">
+        <Navbar />
+        <Hero />
+        <ValueProps />
+        <ProductShowcase />
+        <UserJourneys />
+        <AIFeatures />
+        <PlatformShowcase />
+        <AppEcosystem />
+        <AppShowcaseExtended />
+        <TrustSection />
+        <FinalCTA />
+        <Footer />
+      </main>
+    </>
   )
 }
