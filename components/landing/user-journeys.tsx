@@ -91,15 +91,15 @@ export function UserJourneys({ initialJourney }: { initialJourney?: JourneyType 
     <section id="journeys" className="py-16 md:py-24 lg:py-40 relative overflow-hidden bg-slate-50/80 border-y border-border/40">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 via-transparent to-blue-100/40" />
-      <motion.div 
-        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }} 
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" 
+        className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none"
       />
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.5, 0.2] }} 
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none" 
+        className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +161,7 @@ export function UserJourneys({ initialJourney }: { initialJourney?: JourneyType 
               )}
               <div className="relative z-10 flex items-center gap-2">
                 <User className="w-5 h-5" />
-                Looking to Rent
+                Tenant
               </div>
             </button>
           </div>
@@ -275,10 +275,10 @@ function JourneyVisual({ type, step }: { type: JourneyType; step: string }) {
 
         <div className="grid grid-cols-2 gap-4">
           {[
-            { suburb: "Bondi, NSW", rent: "$750/wk", beds: 2, badge: "Verified", image: "/hero_img2.svg" },
-            { suburb: "St Kilda, VIC", rent: "$620/wk", beds: 2, badge: "Available", image: "/hero_img2.svg" },
-            { suburb: "New Farm, QLD", rent: "$580/wk", beds: 3, badge: "New", image: "/hero_img2.svg" },
-            { suburb: "Fremantle, WA", rent: "$490/wk", beds: 2, badge: "Inspected", image: "/hero_img2.svg" },
+            { suburb: "Bondi, NSW", rent: "$750/wk", beds: 2, badge: "Tenant", image: "/property-apartment.png" },
+            { suburb: "St Kilda, VIC", rent: "$620/wk", beds: 2, badge: "Vacant", image: "/property-lakehouse.png" },
+            { suburb: "New Farm, QLD", rent: "$580/wk", beds: 3, badge: "New", image: "/property-luxury-house.png" },
+            { suburb: "Fremantle, WA", rent: "$490/wk", beds: 2, badge: "Vacant", image: "/property-apartment.png" },
           ].map((item, i) => (
             <motion.div
               key={i}

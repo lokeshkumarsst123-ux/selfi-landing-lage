@@ -21,8 +21,10 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalStep, setModalStep] = useState<"schedule" | "form">("schedule")
-  const [selectedDate, setSelectedDate] = useState<number | null>(null)
+  const [selectedRole, setSelectedRole] = useState<"owner" | "tenant">("owner")
+  const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
+  const [currentMonth, setCurrentMonth] = useState(() => new Date())
   const pathname = usePathname()
 
   const isInnerPage = pathname !== '/'
@@ -49,23 +51,34 @@ export function Navbar() {
   }
   const closeModal = () => setIsModalOpen(false)
 
-  // Generate simple calendar days (just mock next 14 days)
-  const generateDays = () => {
-    const days = []
-    const today = new Date()
-    for (let i = 0; i < 14; i++) {
-      const d = new Date(today)
-      d.setDate(today.getDate() + i)
-      days.push({
-        date: d.getDate(),
-        dayStr: d.toLocaleDateString("en-US", { weekday: "short" }),
-        fullDate: d,
-        id: i
-      })
+  // Custom calendar logic
+  const getDaysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
+  const getFirstDayOfMonth = (year: number, month: number) => new Date(year, month, 1).getDay();
+
+  const generateCalendarDays = () => {
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+    const daysInMonth = getDaysInMonth(year, month);
+    const firstDay = getFirstDayOfMonth(year, month);
+
+    const days = [];
+    for (let i = 0; i < firstDay; i++) {
+      days.push(null);
     }
-    return days
-  }
-  const calendarDays = generateDays()
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push({
+        date: i,
+        fullDate: new Date(year, month, i),
+        id: `${year}-${month}-${i}`
+      });
+    }
+    return days;
+  };
+  const calendarDays = generateCalendarDays();
+  const weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
+  const nextMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+  const prevMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
   const timeSlots = [
     "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM",
     "11:00 AM", "11:30 AM", "01:00 PM", "01:30 PM",
@@ -214,87 +227,164 @@ export function Navbar() {
                       exit={{ opacity: 0, x: 20 }}
                       className="px-4 pb-12 max-w-4xl mx-auto"
                     >
+                      <div className="text-center mb-6">
+                        <div className="inline-flex relative bg-slate-100/50 backdrop-blur-xl rounded-full p-1.5 border border-slate-200/60 shadow-inner w-full max-w-md mx-auto mb-8">
+                          {/* Sliding Indicator */}
+                          <motion.div
+                            className="absolute inset-y-1.5 w-[calc(50%-6px)] bg-[#07254B] rounded-full shadow-[0_4px_12px_rgba(7,37,75,0.3)]"
+                            initial={false}
+                            animate={{
+                              left: selectedRole === "owner" ? "6px" : "calc(50% + 0px)",
+                            }}
+                            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                          />
+                          <button
+                            onClick={() => setSelectedRole("owner")}
+                            className={`flex-1 relative z-10 py-3.5 px-6 flex items-center justify-center gap-2.5 font-bold text-sm rounded-full transition-colors duration-300 ${selectedRole === "owner" ? "text-white" : "text-slate-500 hover:text-slate-800"
+                              }`}
+                          >
+                            <Building className={`w-4 h-4 ${selectedRole === "owner" ? "opacity-100" : "opacity-70"}`} />
+                            Property Owner
+                          </button>
+                          <button
+                            onClick={() => setSelectedRole("tenant")}
+                            className={`flex-1 relative z-10 py-3.5 px-6 flex items-center justify-center gap-2.5 font-bold text-sm rounded-full transition-colors duration-300 ${selectedRole === "tenant" ? "text-white" : "text-slate-500 hover:text-slate-800"
+                              }`}
+                          >
+                            <User className={`w-4 h-4 ${selectedRole === "tenant" ? "opacity-100" : "opacity-70"}`} />
+                            Tenant
+                          </button>
+                        </div>
+                      </div>
                       <div className="text-center mb-10">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-[#07254B]/5 border-[#07254B]/20 text-[#07254B] text-sm font-bold tracking-wide mb-6 shadow-sm">
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-blue-50/80 border-blue-100 text-blue-700 text-sm font-bold tracking-wide mb-6 shadow-sm"
+                        >
                           <CalendarIcon className="w-4 h-4" />
                           Select Date & Time
-                        </div>
-                        <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-3">
-                          Schedule Your <span className="text-[#07254B]">Consultation</span>
-                        </h2>
-                        <p className="text-slate-500 text-base">Pick a time that works best for you, and we'll handle the rest.</p>
+                        </motion.div>
+                        <motion.h2
+                          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+                          className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4"
+                        >
+                          Schedule Your <span className="bg-gradient-to-r from-[#07254B] to-[#17539c] bg-clip-text text-transparent">Consultation</span>
+                        </motion.h2>
+                        <motion.p
+                          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+                          className="text-slate-500 text-lg"
+                        >
+                          Pick a time that works best for you, and we'll handle the rest.
+                        </motion.p>
                       </div>
 
-                      <div className="bg-slate-50 rounded-[2rem] border border-slate-200 p-5 md:p-8 shadow-inner">
-                        {/* Date Selector */}
-                        <div className="mb-8">
-                          <h3 className="text-lg font-bold text-slate-900 mb-5 flex items-center gap-2">
-                            <CalendarIcon className="w-5 h-5 text-[#07254B]" />
-                            1. Select a Date
-                          </h3>
-                          <div className="flex overflow-x-auto pt-2 pb-4 gap-3 snap-x no-scrollbar">
-                            {calendarDays.map((day) => {
-                              const isSelected = selectedDate === day.id
-                              return (
-                                <button
-                                  key={day.id}
-                                  onClick={() => setSelectedDate(day.id)}
-                                  className={`snap-start flex-shrink-0 w-16 h-20 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 border ${isSelected
-                                    ? "bg-[#07254B] border-[#07254B] text-white shadow-lg shadow-[#07254B]/30 scale-105"
-                                    : "bg-white border-slate-200 text-slate-600 hover:bg-[#07254B]/5 hover:border-[#07254B]/30"
-                                    }`}
-                                >
-                                  <span className="text-[11px] font-semibold mb-1 uppercase tracking-wide opacity-80">{day.dayStr}</span>
-                                  <span className="text-xl font-black">{day.date}</span>
-                                </button>
-                              )
-                            })}
-                          </div>
-                        </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
+                        className="bg-white rounded-[2rem] border border-slate-100 p-6 md:p-8 shadow-xl shadow-blue-900/5 relative overflow-hidden"
+                      >
+                        {/* Decorative background element */}
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#07254B] to-[#17539c]" />
+                        
+                        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+                          {/* Date Selector */}
+                          <div>
+                            <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 text-[#07254B] border border-blue-100 text-sm">1</span>
+                              Select a Date
+                            </h3>
 
-                        {/* Time Selector */}
-                        <div className={`transition-all duration-500 ${selectedDate !== null ? "opacity-100" : "opacity-40 pointer-events-none"}`}>
-                          <h3 className="text-lg font-bold text-slate-900 mb-5 flex items-center gap-2">
-                            <Clock className="w-5 h-5 text-[#07254B]" />
-                            2. Choose a Time Slot
-                          </h3>
-                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                            {timeSlots.map((time, idx) => {
-                              // Mock availability
-                              const isAvailable = idx !== 2; // Make 1:00 PM unavailable
-                              const isSelected = selectedTime === time
-                              return (
-                                <button
-                                  key={time}
-                                  disabled={!isAvailable}
-                                  onClick={() => setSelectedTime(time)}
-                                  className={`relative py-2.5 rounded-xl text-[13px] font-semibold border transition-all duration-300 ${!isAvailable
-                                    ? "bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed opacity-60"
-                                    : isSelected
-                                      ? "bg-[#07254B] border-[#07254B] text-white shadow-md shadow-[#07254B]/30 scale-105"
-                                      : "bg-white border-slate-200 text-slate-600 hover:bg-[#07254B]/5 hover:border-[#07254B]/30"
-                                    }`}
-                                >
-                                  {time}
-                                  {!isAvailable && <span className="absolute -top-2 -right-2 bg-slate-200 text-slate-500 text-[10px] px-2 py-0.5 rounded-full border border-slate-300">Full</span>}
+                            <div className="bg-slate-50/50 rounded-[1.5rem] border border-slate-100 p-5">
+                            <div className="flex items-center justify-between mb-6">
+                              <h4 className="text-lg font-bold text-slate-900">
+                                {currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}
+                              </h4>
+                              <div className="flex gap-2">
+                                <button onClick={prevMonth} className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors">
+                                  <ChevronLeft className="w-5 h-5" />
                                 </button>
-                              )
-                            })}
+                                <button onClick={nextMonth} className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors">
+                                  <ChevronRight className="w-5 h-5" />
+                                </button>
+                              </div>
+                            </div>
+
+                            <div className="grid grid-cols-7 gap-y-4 gap-x-2 text-center">
+                              {weekDays.map(day => (
+                                <div key={day} className="text-xs font-bold text-slate-400 uppercase tracking-wider">{day}</div>
+                              ))}
+                            </div>
+
+                            <div className="grid grid-cols-7 gap-y-2 gap-x-2 mt-4">
+                              {calendarDays.map((day, idx) => {
+                                if (!day) return <div key={`empty-${idx}`} className="flex justify-center"><div className="w-10 h-10 sm:w-12 sm:h-12" /></div>;
+
+                                const isSelected = selectedDate === day.id;
+                                const isPast = day.fullDate < new Date(new Date().setHours(0, 0, 0, 0));
+
+                                return (
+                                  <div key={day.id} className="flex justify-center">
+                                    <button
+                                      disabled={isPast}
+                                      onClick={() => setSelectedDate(day.id)}
+                                      className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full text-sm font-medium transition-all duration-300 ${isPast ? "text-slate-300 cursor-not-allowed" :
+                                          isSelected
+                                            ? "bg-[#07254B] text-white shadow-md shadow-[#07254B]/30 scale-110"
+                                            : "bg-transparent text-slate-700 hover:bg-slate-100 hover:text-[#07254B]"
+                                        }`}
+                                    >
+                                      {day.date}
+                                    </button>
+                                  </div>
+                                )
+                              })}
+                            </div>
+                            </div>
                           </div>
-                        </div>
+
+                          {/* Time Selector */}
+                          <div className={`transition-all duration-500 ${selectedDate !== null ? "opacity-100 translate-y-0" : "opacity-40 pointer-events-none translate-y-4"}`}>
+                            <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 text-[#07254B] border border-blue-100 text-sm">2</span>
+                              Choose a Time Slot
+                            </h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                              {timeSlots.map((time, idx) => {
+                                // Mock availability
+                                const isAvailable = idx !== 2 && idx !== 5;
+                                const isSelected = selectedTime === time
+                                return (
+                                  <button
+                                    key={time}
+                                    disabled={!isAvailable}
+                                    onClick={() => setSelectedTime(time)}
+                                    className={`relative py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 ${!isAvailable
+                                      ? "bg-slate-50 border-slate-100 text-slate-300 cursor-not-allowed"
+                                      : isSelected
+                                        ? "bg-[#07254B] border-[#07254B] text-white shadow-lg shadow-[#07254B]/20 scale-105"
+                                        : "bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
+                                      }`}
+                                  >
+                                    {time}
+                                    {!isAvailable && <span className="absolute -top-2.5 -right-2.5 bg-slate-100 text-slate-500 text-[10px] px-2 py-0.5 rounded-full border border-slate-200 shadow-sm">Full</span>}
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          </div>
+                          </div>
 
                         {/* Action Buttons */}
-                        <div className={`mt-12 flex justify-end transition-opacity duration-500 ${selectedDate !== null && selectedTime !== null ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                        <div className={`mt-10 pt-6 border-t border-slate-100 flex justify-end transition-all duration-500 ${selectedDate !== null && selectedTime !== null ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none translate-y-4"}`}>
                           <Button
                             size="lg"
                             onClick={() => setModalStep("form")}
-                            className="bg-[#07254B] hover:bg-[#07254B]/90 text-white rounded-xl px-8 h-12 text-base font-bold group shadow-[0_0_20px_rgba(7,37,75,0.3)]"
+                            className="w-full sm:w-auto bg-[#07254B] hover:bg-[#07254B]/90 text-white rounded-xl px-10 h-14 text-base font-bold group shadow-lg hover:shadow-xl hover:shadow-[#07254B]/20 hover:-translate-y-0.5 transition-all"
                           >
                             Continue to Details
                             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                           </Button>
                         </div>
-                      </div>
+                      </motion.div>
                     </motion.div>
                   ) : (
                     <motion.div
@@ -316,11 +406,11 @@ export function Navbar() {
                         {selectedDate !== null && selectedTime && (
                           <div className="flex items-center gap-2 text-xs font-semibold bg-[#07254B]/5 border border-[#07254B]/20 text-[#07254B] px-3 py-1.5 rounded-full">
                             <CheckCircle2 className="w-3.5 h-3.5" />
-                            {calendarDays.find(d => d.id === selectedDate)?.dayStr} {calendarDays.find(d => d.id === selectedDate)?.date}, {selectedTime}
+                            {calendarDays.find(d => d && d.id === selectedDate)?.fullDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}, {selectedTime}
                           </div>
                         )}
                       </div>
-                      <FormsSection isModal />
+                      <FormsSection isModal initialForm={selectedRole} hideRoleSelector={true} />
                     </motion.div>
                   )}
                 </AnimatePresence>

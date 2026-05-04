@@ -11,8 +11,8 @@ type FormType = "owner" | "tenant"
 type OwnerStep = 1 | 2 | 3
 type TenantStep = 1 | 2 | 3
 
-export function FormsSection({ isModal = false }: { isModal?: boolean }) {
-  const [activeForm, setActiveForm] = useState<FormType>("owner")
+export function FormsSection({ isModal = false, initialForm = "owner", hideRoleSelector = false }: { isModal?: boolean, initialForm?: "owner" | "tenant", hideRoleSelector?: boolean }) {
+  const [activeForm, setActiveForm] = useState<FormType>(initialForm)
   const [ownerStep, setOwnerStep] = useState<OwnerStep>(1)
   const [tenantStep, setTenantStep] = useState<TenantStep>(1)
   const [ownerFormSubmitted, setOwnerFormSubmitted] = useState(false)
@@ -59,30 +59,37 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
       >
         <div className={`bg-white rounded-[2.5rem] border border-white shadow-2xl overflow-hidden relative ${isModal ? "mb-8 ring-1 ring-white/20" : "dark:bg-card/40 dark:backdrop-blur-md dark:border-white/10"}`}>
           {/* Form Type Selector */}
-          <div className={`flex justify-center border-b border-slate-100 bg-slate-50/50 ${isModal ? "p-4 sm:p-6" : "p-8"}`}>
-            <div className="inline-flex bg-white rounded-full p-1.5 sm:p-2 border border-slate-200 shadow-sm w-full max-w-md">
-              <button
-                onClick={() => setActiveForm("owner")}
-                className={`flex-1 relative py-4 px-6 flex items-center justify-center gap-3 font-bold text-sm rounded-full transition-all duration-300 ${activeForm === "owner"
-                  ? "bg-[#07254B] text-white shadow-xl scale-[1.02]"
-                  : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
-                  }`}
-              >
-                <Building className="w-4 h-4" />
-                Property Owner
-              </button>
-              <button
-                onClick={() => setActiveForm("tenant")}
-                className={`flex-1 relative py-4 px-6 flex items-center justify-center gap-3 font-bold text-sm rounded-full transition-all duration-300 ${activeForm === "tenant"
-                  ? "bg-[#07254B] text-white shadow-xl scale-[1.02]"
-                  : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
-                  }`}
-              >
-                <User className="w-4 h-4" />
-                Looking to Rent
-              </button>
+          {!hideRoleSelector && (
+            <div className={`flex justify-center border-b border-slate-100 bg-gradient-to-b from-slate-50/80 to-transparent ${isModal ? "p-4 sm:p-6" : "p-8 md:p-10"}`}>
+              <div className="inline-flex relative bg-slate-100/50 backdrop-blur-xl rounded-full p-1.5 border border-slate-200/60 shadow-inner w-full max-w-md mx-auto">
+                {/* Sliding Indicator */}
+                <motion.div
+                  className="absolute inset-y-1.5 w-[calc(50%-6px)] bg-[#07254B] rounded-full shadow-[0_4px_12px_rgba(7,37,75,0.3)]"
+                  initial={false}
+                  animate={{
+                    left: activeForm === "owner" ? "6px" : "calc(50% + 0px)",
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+                <button
+                  onClick={() => setActiveForm("owner")}
+                  className={`flex-1 relative z-10 py-3.5 px-6 flex items-center justify-center gap-2.5 font-bold text-sm rounded-full transition-colors duration-300 ${activeForm === "owner" ? "text-white" : "text-slate-500 hover:text-slate-800"
+                    }`}
+                >
+                  <Building className={`w-4 h-4 ${activeForm === "owner" ? "opacity-100" : "opacity-70"}`} />
+                  Property Owner
+                </button>
+                <button
+                  onClick={() => setActiveForm("tenant")}
+                  className={`flex-1 relative z-10 py-3.5 px-6 flex items-center justify-center gap-2.5 font-bold text-sm rounded-full transition-colors duration-300 ${activeForm === "tenant" ? "text-white" : "text-slate-500 hover:text-slate-800"
+                    }`}
+                >
+                  <User className={`w-4 h-4 ${activeForm === "tenant" ? "opacity-100" : "opacity-70"}`} />
+                  Tenant
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className={isModal ? "p-6 sm:p-8" : "p-8 md:p-12 lg:p-16"}>
             <AnimatePresence mode="wait">
@@ -105,7 +112,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                       {/* Progress Bar */}
                       <div className="mb-10">
                         <div className="flex justify-between mb-3 text-center sm:text-left">
-                          {["Contact Info", "Property Details", "Service Plan"].map((label, i) => (
+                          {["Contact Info", "Property Details", "Agent Fees"].map((label, i) => (
                             <div key={label} className={`text-[10px] sm:text-sm font-medium ${i + 1 <= ownerStep ? "text-primary" : "text-muted-foreground"}`}>
                               {label}
                             </div>
@@ -139,7 +146,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                             <StepContent key="owner-step-2">
                               <h3 className="text-2xl font-bold text-foreground mb-6">Property Details</h3>
                               <div className="space-y-6">
-                                <FormField icon={Home} label="Property Address" id="property-address" placeholder="123 Main Street, Sydney NSW 2000" required />
+
                                 <div className="grid md:grid-cols-2 gap-6">
                                   <FormField icon={DollarSign} label="Weekly Rent" id="expected-rent" type="number" placeholder="550" />
                                   <div className="space-y-2">
@@ -170,39 +177,16 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
 
                           {ownerStep === 3 && (
                             <StepContent key="owner-step-3">
-                              <h3 className="text-2xl font-bold text-foreground mb-6">Choose Your Plan</h3>
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                {[
-                                  { name: "Basic", price: "$0", desc: "Self-service tools", features: ["Listing creation", "Basic analytics", "Email support"] },
-                                  { name: "Standard", price: "$49", desc: "Smart automation tools", features: ["Everything in Basic", "Smart rent pricing", "Tenant screening", "Priority support"], popular: true },
-                                  { name: "Premium", price: "$99", desc: "Full-service management", features: ["Everything in Standard", "Dedicated manager", "Maintenance coordination", "Legal compliance"] },
-                                ].map((plan) => (
-                                  <label
-                                    key={plan.name}
-                                    className={`relative flex flex-col p-6 border rounded-2xl cursor-pointer transition-all duration-300 hover:shadow-lg ${plan.popular
-                                      ? "border-primary bg-primary/5 ring-2 ring-primary/20"
-                                      : "border-border hover:border-primary/50 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                                      }`}
-                                  >
-                                    <input type="radio" name="service-plan" value={plan.name} className="sr-only" defaultChecked={plan.popular} />
-                                    {plan.popular && (
-                                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                                        Most Popular
-                                      </div>
-                                    )}
-                                    <div className="text-3xl font-bold text-foreground">{plan.price}<span className="text-base font-normal text-muted-foreground">/mo</span></div>
-                                    <div className="text-lg font-semibold text-foreground mt-1">{plan.name}</div>
-                                    <div className="text-sm text-muted-foreground mb-4">{plan.desc}</div>
-                                    <ul className="space-y-2 mt-auto">
-                                      {plan.features.map((f) => (
-                                        <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                          <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
-                                          {f}
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </label>
-                                ))}
+                              <h3 className="text-2xl font-bold text-foreground mb-6">Agent Fees</h3>
+                              <div className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+                                <div className="flex items-center justify-between">
+                                  <div>
+                                    <p className="font-semibold text-foreground">Agent Fees</p>
+                                    <p className="text-sm text-muted-foreground">Standard management fee</p>
+                                  </div>
+                                  <div className="text-3xl font-bold text-foreground">5%</div>
+                                </div>
+                                <p className="text-xs text-muted-foreground mt-3">Covers rent collection, tenant management, and maintenance coordination</p>
                               </div>
                             </StepContent>
                           )}
@@ -215,7 +199,7 @@ export function FormsSection({ isModal = false }: { isModal?: boolean }) {
                               Back
                             </Button>
                           )}
-                          <Button type="submit" size="lg" className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground group">
+                          <Button type="submit" size="lg" className="flex-1 bg-[#07254B] hover:bg-[#07254B]/90 text-white group">
                             {ownerStep === 3 ? "Submit Property" : "Continue"}
                             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                           </Button>
@@ -441,13 +425,13 @@ function SuccessMessage({
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-        className={`w-24 h-24 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-8`}
+        className={`w-24 h-24 mx-auto rounded-full bg-[#07254B]/10 flex items-center justify-center mb-8`}
       >
-        <CheckCircle className={`w-12 h-12 text-primary`} />
+        <CheckCircle className={`w-12 h-12 text-[#07254B]`} />
       </motion.div>
       <h3 className="text-3xl font-bold text-foreground mb-3">{title}</h3>
       <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">{message}</p>
-      <Button variant="outline" onClick={onReset} size="lg" className="border-border shadow-sm">
+      <Button onClick={onReset} size="lg" className="bg-[#07254B] hover:bg-[#07254B]/90 text-white shadow-md font-medium px-8">
         Submit Another
       </Button>
     </motion.div>
