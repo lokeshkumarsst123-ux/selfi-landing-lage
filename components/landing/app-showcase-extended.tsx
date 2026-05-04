@@ -32,10 +32,10 @@ export function AppShowcaseExtended() {
     return (
         <section className="py-20 md:py-32 bg-white relative overflow-hidden">
             {/* Soft Background Accent */}
-            <motion.div 
-              animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }} 
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[100px] pointer-events-none" 
+            <motion.div
+                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[100px] pointer-events-none"
             />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -58,7 +58,7 @@ export function AppShowcaseExtended() {
                             >
                                 <div className="relative aspect-[9/19] rounded-[2.5rem] border-[8px] border-slate-800 bg-slate-900 shadow-2xl overflow-hidden">
                                     <Image
-                                        src="/hero_img2.svg"
+                                        src="/p-2.svg"
                                         alt="App Stats Screen"
                                         width={400} height={800}
                                         className="w-full h-full object-cover"
@@ -76,7 +76,7 @@ export function AppShowcaseExtended() {
                             >
                                 <div className="relative aspect-[9/19] rounded-[2.5rem] border-[8px] border-slate-800 bg-slate-900 shadow-2xl overflow-hidden">
                                     <Image
-                                        src="/hero_img2.svg"
+                                        src="/p-3.svg"
                                         alt="App Dashboard Screen"
                                         width={400} height={800}
                                         className="w-full h-full object-cover"
@@ -94,7 +94,7 @@ export function AppShowcaseExtended() {
                             >
                                 <div className="relative aspect-[9/19] rounded-[3rem] border-[10px] border-slate-900 bg-slate-900 shadow-[0_40px_80px_rgba(0,0,0,0.2)] overflow-hidden">
                                     <Image
-                                        src="/hero_img2.svg"
+                                        src="/p-1.svg"
                                         alt="App Main Screen"
                                         width={400} height={800}
                                         className="w-full h-full object-cover"
