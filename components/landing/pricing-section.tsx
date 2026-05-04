@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect } from "react"
 import { motion, animate, useAnimation } from "framer-motion"
@@ -191,3 +191,4 @@ const comparisonFeatures = [
   { feature: "Legal Document Templates", traditional: "Extra fee", selfi: "Included" },
   { feature: "Predictive Maintenance AI", traditional: false, selfi: true },
 ]
+

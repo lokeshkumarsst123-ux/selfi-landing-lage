@@ -20,7 +20,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [modalStep, setModalStep] = useState<"schedule" | "form">("schedule")
+  const [modalStep, setModalStep] = useState<"role" | "schedule" | "form">("role")
   const [selectedRole, setSelectedRole] = useState<"owner" | "tenant">("owner")
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
@@ -44,7 +44,7 @@ export function Navbar() {
   const useDarkHeader = isScrolled || isMobileMenuOpen || isInnerPage
 
   const openModal = () => {
-    setModalStep("schedule")
+    setModalStep("role")
     setSelectedDate(null)
     setSelectedTime(null)
     setIsModalOpen(true)
@@ -211,7 +211,63 @@ export function Navbar() {
               {/* Modal Body */}
               <div className="flex flex-col flex-1 overflow-hidden">
                 <AnimatePresence mode="wait">
-                  {modalStep === "schedule" ? (
+                  {modalStep === "role" ? (
+                    <motion.div
+                      key="role"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      className="flex flex-col h-full"
+                    >
+                      {/* Role Step Header */}
+                      <div className="px-5 pt-4 pb-4 border-b border-slate-100 flex items-center gap-3">
+                        <div className="flex-1 min-w-0">
+                          <h2 className="text-base font-extrabold text-slate-900 leading-tight">Book an <span className="bg-gradient-to-r from-[#07254B] to-[#17539c] bg-clip-text text-transparent">Agent</span></h2>
+                          <p className="text-slate-400 text-xs mt-0.5">Who are you? Select your role to get started.</p>
+                        </div>
+                        <button onClick={closeModal} className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shrink-0">
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      {/* Role Cards */}
+                      <div className="flex-1 flex flex-col items-center justify-center gap-5 p-8">
+                        <p className="text-sm text-slate-500 font-medium mb-2">I am a...</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 w-full max-w-sm">
+                          <button
+                            onClick={() => { setSelectedRole("owner"); setModalStep("schedule"); }}
+                            className={`group relative p-6 rounded-2xl border-2 text-left transition-all duration-200 ${selectedRole === "owner"
+                              ? "border-[#07254B] bg-[#07254B]/5 shadow-md"
+                              : "border-slate-200 bg-white hover:border-[#07254B]/40 hover:bg-slate-50"
+                              }`}
+                          >
+                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${selectedRole === "owner" ? "bg-[#07254B] text-white" : "bg-slate-100 text-slate-600 group-hover:bg-[#07254B]/10 group-hover:text-[#07254B]"
+                              } transition-all`}>
+                              <Building className="w-6 h-6" />
+                            </div>
+                            <h3 className="font-bold text-slate-900 text-base mb-1">Property Owner</h3>
+                            <p className="text-xs text-slate-500">I own a property and want to list it & book an agent.</p>
+                            {selectedRole === "owner" && <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#07254B] flex items-center justify-center"><CheckCircle2 className="w-3 h-3 text-white" /></div>}
+                          </button>
+                          <button
+                            onClick={() => { setSelectedRole("tenant"); setModalStep("schedule"); }}
+                            className={`group relative p-6 rounded-2xl border-2 text-left transition-all duration-200 ${selectedRole === "tenant"
+                              ? "border-[#07254B] bg-[#07254B]/5 shadow-md"
+                              : "border-slate-200 bg-white hover:border-[#07254B]/40 hover:bg-slate-50"
+                              }`}
+                          >
+                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${selectedRole === "tenant" ? "bg-[#07254B] text-white" : "bg-slate-100 text-slate-600 group-hover:bg-[#07254B]/10 group-hover:text-[#07254B]"
+                              } transition-all`}>
+                              <User className="w-6 h-6" />
+                            </div>
+                            <h3 className="font-bold text-slate-900 text-base mb-1">Tenant</h3>
+                            <p className="text-xs text-slate-500">I'm looking to rent a property and want agent help.</p>
+                            {selectedRole === "tenant" && <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#07254B] flex items-center justify-center"><CheckCircle2 className="w-3 h-3 text-white" /></div>}
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : modalStep === "schedule" ? (
                     <motion.div
                       key="schedule"
                       initial={{ opacity: 0, x: -20 }}
@@ -222,25 +278,16 @@ export function Navbar() {
                       {/* Header */}
                       <div className="px-5 pt-4 pb-4 border-b border-slate-100">
                         <div className="flex items-center gap-3">
+                          <button
+                            onClick={() => setModalStep("role")}
+                            className="flex items-center gap-1.5 text-slate-500 hover:text-[#07254B] transition-colors text-xs font-semibold shrink-0"
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                            Back
+                          </button>
                           <div className="flex-1 min-w-0">
-                            <h2 className="text-base font-extrabold text-slate-900 leading-tight">Schedule Your <span className="bg-gradient-to-r from-[#07254B] to-[#17539c] bg-clip-text text-transparent">Consultation</span></h2>
-                            <p className="text-slate-400 text-xs mt-0.5">Select a date & time, then fill your details.</p>
-                          </div>
-                          <div className="inline-flex relative bg-slate-100 rounded-full p-1 border border-slate-200/80 shadow-inner shrink-0">
-                            <motion.div
-                              className="absolute inset-y-1 w-[calc(50%-4px)] bg-[#07254B] rounded-full shadow-[0_4px_12px_rgba(7,37,75,0.3)]"
-                              initial={false}
-                              animate={{ left: selectedRole === "owner" ? "4px" : "calc(50%)" }}
-                              transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                            />
-                            <button onClick={() => setSelectedRole("owner")} className={`relative z-10 py-1.5 px-3 flex items-center gap-1.5 font-bold text-xs rounded-full transition-colors duration-300 ${selectedRole === "owner" ? "text-white" : "text-slate-500 hover:text-slate-800"}`}>
-                              <Building className="w-3 h-3" />
-                              Owner
-                            </button>
-                            <button onClick={() => setSelectedRole("tenant")} className={`relative z-10 py-1.5 px-3 flex items-center gap-1.5 font-bold text-xs rounded-full transition-colors duration-300 ${selectedRole === "tenant" ? "text-white" : "text-slate-500 hover:text-slate-800"}`}>
-                              <User className="w-3 h-3" />
-                              Tenant
-                            </button>
+                            <h2 className="text-base font-extrabold text-slate-900 leading-tight">Select Date & Time</h2>
+                            <p className="text-slate-400 text-xs mt-0.5">Booking as: <span className="font-semibold text-[#07254B]">{selectedRole === "owner" ? "Property Owner" : "Tenant"}</span></p>
                           </div>
                           <button
                             onClick={closeModal}
@@ -288,12 +335,11 @@ export function Navbar() {
                                     <button
                                       disabled={isPast}
                                       onClick={() => setSelectedDate(day.id)}
-                                      className={`w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium transition-all duration-200 ${
-                                        isPast ? "text-slate-300 cursor-not-allowed" :
+                                      className={`w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium transition-all duration-200 ${isPast ? "text-slate-300 cursor-not-allowed" :
                                         isSelected
                                           ? "bg-[#07254B] text-white shadow-md scale-110"
                                           : "text-slate-700 hover:bg-slate-100 hover:text-[#07254B]"
-                                      }`}
+                                        }`}
                                     >
                                       {day.date}
                                     </button>
@@ -385,7 +431,7 @@ export function Navbar() {
                         </button>
                       </div>
                       <div className="flex-1 overflow-y-auto">
-                        <FormsSection isModal initialForm={selectedRole} hideRoleSelector={true} />
+                        <FormsSection isModal initialForm={selectedRole} hideRoleSelector={true} appointmentDate={selectedDate !== null && calendarDays.find(d => d && d.id === selectedDate)?.fullDate.toLocaleDateString("en-AU", { weekday: "short", month: "short", day: "numeric", year: "numeric" }) || undefined} appointmentTime={selectedTime || undefined} />
                       </div>
                     </motion.div>
                   )}
@@ -398,3 +444,4 @@ export function Navbar() {
     </>
   )
 }
+

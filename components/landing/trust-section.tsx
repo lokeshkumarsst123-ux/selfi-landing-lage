@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { ShieldCheck, Scale, Lock, CreditCard, Award, Building2 } from "lucide-react"
@@ -171,3 +171,4 @@ export function TrustSection() {
     </section>
   )
 }
+

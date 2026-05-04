@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { Building2, User, Wrench, Smartphone, Apple } from "lucide-react"
@@ -7,7 +7,7 @@ const apps = [
     {
         title: "Owner App",
         icon: Building2,
-        description: "Your complete property control centre. List properties, collect rent automatically, screen applicants, and approve maintenance — all in one simple dashboard.",
+        description: "Your complete property control centre. List properties, collect rent automatically, screen applicants, and approve tradesperson — all in one simple dashboard.",
         color: "from-blue-500 to-blue-400",
         shadowColor: "shadow-blue-500/20",
         features: ["Property Listings", "Rent Tracking", "Tenant Screening"],
@@ -16,16 +16,16 @@ const apps = [
     {
         title: "Tenant App",
         icon: User,
-        description: "The modern renting experience. Browse verified homes, pay rent with a tap, report maintenance issues, and stay in touch with your owner directly.",
+        description: "The modern renting experience. Browse verified homes, pay rent with a tap, report tradesperson issues, and stay in touch with your owner directly.",
         color: "from-blue-400 to-indigo-500",
         shadowColor: "shadow-blue-500/20",
-        features: ["Verified Listings", "Digital Lease", "1-Tap Maintenance"],
+        features: ["Verified Listings", "Digital Lease", "1-Tap Tradesperson"],
         delay: 0.2
     },
     {
         title: "Tradesperson App",
         icon: Wrench,
-        description: "Get jobs without the headache. Receive local maintenance requests, submit quotes, and get paid fast — no paperwork, no delays.",
+        description: "Get jobs without the headache. Receive local tradesperson requests, submit quotes, and get paid fast — no paperwork, no delays.",
         color: "from-amber-400 to-orange-500",
         shadowColor: "shadow-orange-500/20",
         features: ["Job Requests", "Fast Quoting", "Guaranteed Payouts"],
@@ -116,3 +116,4 @@ export function AppEcosystem() {
         </section>
     )
 }
+

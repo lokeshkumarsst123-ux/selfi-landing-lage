@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion"
 import { useState } from "react"
@@ -169,7 +169,7 @@ export function Hero() {
                 </FloatingElement>
               </motion.div>
 
-              {/* Right Phone: Maintenance App */}
+              {/* Right Phone: Tradesperson App */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -178,11 +178,11 @@ export function Hero() {
               >
                 <FloatingElement delay={0.5} duration={4.5}>
                   <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-slate-200 shadow-xl whitespace-nowrap">
-                    <span className="text-xs font-bold text-slate-700">Maintenance App</span>
+                    <span className="text-xs font-bold text-slate-700">Tradesperson App</span>
                   </div>
                   <Image
                     src="/hero_img3.svg"
-                    alt="Maintenance App"
+                    alt="Tradesperson App"
                     width={400}
                     height={800}
                     className="w-full h-auto drop-shadow-2xl border-[8px] border-slate-800 rounded-[2rem] bg-slate-900"
@@ -349,3 +349,4 @@ function FloatingElement({ children, className, delay = 0, duration = 4 }: Float
     </motion.div>
   )
 }
+

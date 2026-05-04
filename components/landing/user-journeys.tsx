@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -500,11 +500,11 @@ function JourneyVisual({ type, step }: { type: JourneyType; step: string }) {
               <Key className="w-4 h-4" />
               Login credentials sent to your email
             </div>
-            <div className="text-xs text-muted-foreground">Manage listings, collect rent, track maintenance — all in one dashboard.</div>
+            <div className="text-xs text-muted-foreground">Manage listings, collect rent, track tradesperson — all in one dashboard.</div>
           </div>
           <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-xl">
             <MessageCircle className="w-4 h-4 text-blue-600" />
-            <span className="text-sm text-muted-foreground">Maintenance request from <strong className="text-foreground">Sarah J.</strong></span>
+            <span className="text-sm text-muted-foreground">Tradesperson request from <strong className="text-foreground">Sarah J.</strong></span>
             <span className="ml-auto text-xs text-blue-600 font-medium">View</span>
           </div>
         </div>
@@ -531,3 +531,4 @@ function JourneyVisual({ type, step }: { type: JourneyType; step: string }) {
     </div>
   )
 }
+

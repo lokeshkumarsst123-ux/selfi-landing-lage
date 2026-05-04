@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -61,10 +61,10 @@ export function ProductShowcase() {
               For Landlords
             </div>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-[1.15] mb-6 tracking-tight">
-              Owner App
+              Property Owner App
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium">
-              Take complete control of your property portfolio from your pocket. Track rent payments, approve maintenance requests, and review tenant applications in seconds.
+              Take complete control of your property portfolio from your pocket. Track rent payments, approve tradesperson requests, and review tenant applications in seconds.
             </p>
             <motion.div
               className="space-y-5"
@@ -174,7 +174,7 @@ export function ProductShowcase() {
               Tenant App
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium">
-              The modern way to rent. Keep track of your lease, securely pay rent via the app, and instantly report maintenance issues with photos and videos.
+              The modern way to rent. Keep track of your lease, securely pay rent via the app, and instantly report tradesperson issues with photos and videos.
             </p>
             <motion.div
               className="space-y-5"
@@ -211,7 +211,7 @@ export function ProductShowcase() {
           </motion.div>
         </div>
 
-        {/* ── SECTION 3: MAINTENANCE APP ── */}
+        {/* ── SECTION 3: Tradesperson App ── */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Content */}
           <motion.div
@@ -225,7 +225,7 @@ export function ProductShowcase() {
               For Tradies
             </div>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-[1.15] mb-6 tracking-tight">
-              Maintenance App
+              Tradesperson App
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium">
               Say goodbye to chasing invoices. Receive job requests from owners, submit quotes on the spot, and get paid directly through the app once the job is done.
@@ -279,15 +279,15 @@ export function ProductShowcase() {
             >
               {/* Back Left Phone */}
               <div className="absolute left-[5%] sm:left-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] -rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/t-2.svg" alt="Maintenance App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/t-2.svg" alt="Tradesperson App Screen 2" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Back Right Phone */}
               <div className="absolute right-[5%] sm:right-[10%] z-10 w-36 sm:w-48 lg:w-56 aspect-[9/19] rotate-6 scale-90 opacity-80 shadow-2xl rounded-[2rem] border-[8px] border-slate-800 bg-slate-900 overflow-hidden">
-                <Image src="/t-3.svg" alt="Maintenance App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/t-3.svg" alt="Tradesperson App Screen 3" width={400} height={800} className="w-full h-full object-cover" />
               </div>
               {/* Front Center Phone */}
               <div className="relative z-30 w-48 sm:w-64 lg:w-72 aspect-[9/19] shadow-[0_40px_80px_rgba(0,0,0,0.2)] rounded-[2.5rem] border-[10px] border-slate-900 bg-slate-900 overflow-hidden">
-                <Image src="/t-1.svg" alt="Maintenance App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
+                <Image src="/t-1.svg" alt="Tradesperson App Main Screen" width={400} height={800} className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </motion.div>
@@ -297,3 +297,4 @@ export function ProductShowcase() {
     </section>
   )
 }
+

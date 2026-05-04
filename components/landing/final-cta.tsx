@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { ArrowRight, Building, User, CheckCircle, Home } from "lucide-react"
@@ -90,3 +90,4 @@ export function FinalCTA() {
     </section>
   )
 }
+

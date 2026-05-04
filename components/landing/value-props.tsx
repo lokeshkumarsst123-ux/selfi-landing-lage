@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { BadgeDollarSign, Users, Zap, LayoutDashboard, ArrowRight } from "lucide-react"
@@ -121,3 +121,4 @@ export function ValueProps() {
     </section>
   )
 }
+
